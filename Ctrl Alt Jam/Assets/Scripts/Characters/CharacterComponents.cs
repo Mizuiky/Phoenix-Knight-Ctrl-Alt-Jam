@@ -9,7 +9,7 @@ namespace JAM.Characters
     [Serializable]
     public class CharacterComponents
     {
-        #region Components Unity
+        #region Unity Components
 
         public Rigidbody2D characterRigidbody2D { private set; get; }
         public Animator characterAnimator { private set; get; }

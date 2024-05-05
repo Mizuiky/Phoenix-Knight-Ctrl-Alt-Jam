@@ -10,7 +10,7 @@ namespace JAM.InputManagement
     public class InputHandler : MonoBehaviour
     {
         protected CharacterBase character;
-        protected Rigidbody2D rbody;
+        protected Rigidbody2D rb;
         protected AnimatorController animatorController;
         private float horizontalInput;
         private float verticalInput;
@@ -22,7 +22,7 @@ namespace JAM.InputManagement
         private void Awake()
         {
             character = GetComponent<CharacterBase>();
-            rbody = character.characterComponents.characterRigidbody2D;
+            rb = character.characterComponents.characterRigidbody2D;
             animatorController = character.characterComponents.animatorController;
         }
 

@@ -21,25 +21,20 @@ public class CharacterData : ScriptableObject
 
     [Range(0, 10)]
     [Tooltip("Maximum speed for character.")]
-    public float originMaxSpeed = 0;
+    public float originMaxSpeed = 3;
 
     [Tooltip("Maximum speed for character.")]
     public Vector2 movementInput = Vector2.zero;
 
     [Range(0, 1000)]
     [Tooltip("Maximum speed for character.")]
-    public float maxSpeed = 5;
+    public float maxSpeed = 3;
 
     [Range(0.1f, 100)]
     [Tooltip("Acceleration speed for character.")]
-    public float acceleration = 20;
+    public float acceleration = 5;
 
     [Range(0.1f, 100)]
     [Tooltip("Deceleration speed for character.")]
-    public float deceleration = 20;
-
-    //public CharacterData()
-    //{
-    //    originMaxSpeed = maxSpeed;
-    //}
+    public float deceleration = 10;
 }
