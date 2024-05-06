@@ -7,8 +7,8 @@ namespace JAM.Movements
     public class Movement : MonoBehaviour
     {
         private CharacterBase _character;
-        private Rigidbody2D _rigidbody2D;
-        private IMovementUpdater _movementEntity;
+        private Rigidbody2D _rb;
+        private IMovementUpdater _movementEvents;
         private Vector2 velocity;
         [SerializeField] private bool isAbility;
         [HideInInspector] public Vector2 currentPosition { get; private set; }
@@ -16,13 +16,13 @@ namespace JAM.Movements
         public void Awake()
         {
             _character = GetComponent<CharacterBase>();
-            _movementEntity = _character.characterEvents;
-            _movementEntity.OnMovementVelocityNormal().AddListener(OnMovementVelocityNormal);
-            _movementEntity.OnMovementPositionNormal().AddListener(OnMovementPositionNormal);
+            _movementEvents = _character.characterEvents;
+            _movementEvents.OnMovementVelocityNormal().AddListener(OnMovementVelocityNormal);
+            _movementEvents.OnMovementPositionNormal().AddListener(OnMovementPositionNormal);
         }
         private void Start()
         {
-            _rigidbody2D = _character.characterComponents.characterRigidbody2D;
+            _rb = _character.characterComponents.characterRigidbody2D;
             _character.characterData.originMaxSpeed = _character.characterData.maxSpeed;
         }
 
@@ -50,17 +50,17 @@ namespace JAM.Movements
 
         private void Move()
         {
-            _rigidbody2D.velocity = velocity;
+            _rb.velocity = velocity;
         }
         private void MovePosition()
         {
-            _rigidbody2D.MovePosition(velocity);
+            _rb.MovePosition(velocity);
         }
 
         private void OnDestroy()
         {
-            _movementEntity?.OnMovementVelocityNormal()?.RemoveListener(OnMovementVelocityNormal);
-            _movementEntity?.OnMovementPositionNormal()?.RemoveListener(OnMovementPositionNormal);
+            _movementEvents?.OnMovementVelocityNormal()?.RemoveListener(OnMovementVelocityNormal);
+            _movementEvents?.OnMovementPositionNormal()?.RemoveListener(OnMovementPositionNormal);
         }
     }
 }
