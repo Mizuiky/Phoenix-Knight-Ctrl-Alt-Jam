@@ -1,18 +1,27 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 
-public class ItemBase : MonoBehaviour
+public abstract class ItemBase : MonoBehaviour, IItem
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] protected ItemData data;
+
+    public Action<ItemData> onCollect;
+    public ParticleSystem collectParticle;
+
+    public void OnTriggerEnter2D(Collider2D collision)
     {
-        
+        if (collision.CompareTag("Player"))
+            OnCollect();
     }
 
-    // Update is called once per frame
-    void Update()
+    public virtual void OnCollect()
     {
-        
+        PlayParticle();
+        onCollect?.Invoke(data);
+    }
+
+    public void PlayParticle()
+    {
+
     }
 }
