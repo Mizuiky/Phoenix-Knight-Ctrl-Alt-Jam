@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f82d87283e4e8c041ba03ff2430ead4f, type: 3}
   m_Name: PlayerData
   m_EditorClassIdentifier: 
-  characterSpriteRender: {fileID: 0}
+  characterSpriteRender: {fileID: 21300000, guid: 1ab8c3bef1c8d41c2bcaeb963b25c84f, type: 3}
   characterType: 0
   characterAnimationDirection: 1
   currentVelocity: 0
