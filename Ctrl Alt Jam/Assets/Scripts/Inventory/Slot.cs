@@ -10,9 +10,10 @@ public class Slot : MonoBehaviour
 
     private int _qtd;
 
-    public void AddItem()
+    public void AddItem(ItemData data)
     {
-
+        _currentItem = data;
+        _slotIcon.sprite = data.itemSprite;
     }
 
     public void IncreaseItemQtd()
