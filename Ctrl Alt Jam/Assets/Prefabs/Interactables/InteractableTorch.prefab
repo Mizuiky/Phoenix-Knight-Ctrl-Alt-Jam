@@ -266,7 +266,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6930956293229270901}
   m_Layer: 3
-  m_Name: Model
+  m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
