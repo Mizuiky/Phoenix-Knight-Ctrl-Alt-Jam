@@ -4,38 +4,34 @@ using System.Linq;
 
 namespace JAM.Abilites
 {
-    [AddComponentMenu("JAM/Abilities/Abilite Manager")]
-    [DisallowMultipleComponent]
-
-    public sealed class AbilityController : MonoBehaviour
+    public class PlayerAbilityController : MonoBehaviour
     {
-        List<IAbility> _abilities = new List<IAbility>();
+        List<IPlayerAbility> _abilities = new List<IPlayerAbility>();
 
         void OnValidate()
         {
             _abilities.Clear();
-            _abilities = GetComponents<IAbility>().ToList();
+            _abilities = GetComponents<IPlayerAbility>().ToList();
         }
 
         private void Awake()
         {
-            enabled = false;
-            _abilities = GetComponents<IAbility>().ToList();
+            _abilities = GetComponents<IPlayerAbility>().ToList();
         }
 
-        private void Start()
+        public void Init(PlayerInputActions inputActions)
         {
-            foreach (IAbility ability in _abilities)
+            foreach (IPlayerAbility ability in _abilities)
             {
+                ability.SetInput(inputActions);
                 ability.Enter();
                 ability.HandleInput();
-                ability.InternalInput();
             }
         }
 
         private void Update()
         {
-            foreach (IAbility ability in _abilities)
+            foreach (IPlayerAbility ability in _abilities)
             {
                 ability.HandleAbility();
             }
@@ -43,7 +39,7 @@ namespace JAM.Abilites
 
         private void FixedUpdate()
         {
-            foreach (IAbility ability in _abilities)
+            foreach (IPlayerAbility ability in _abilities)
             {
                 ability.PhysicsUpdate();
             }
@@ -61,7 +57,7 @@ namespace JAM.Abilites
 
         private void OnApplicationQuit()
         {
-            foreach (IAbility ability in _abilities)
+            foreach (IPlayerAbility ability in _abilities)
             {
                 ability.Exit();
             }

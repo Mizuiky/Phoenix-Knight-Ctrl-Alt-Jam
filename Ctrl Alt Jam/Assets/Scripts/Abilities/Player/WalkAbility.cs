@@ -3,7 +3,7 @@ using UnityEngine;
 namespace JAM.Abilites
 {
     [DisallowMultipleComponent]
-    public class WalkingAbility : AbilityBase<WalkingAbility>
+    public class WalkingAbility : PlayerAbilityBase<WalkingAbility>
     {
         public override void Enter()
         {
