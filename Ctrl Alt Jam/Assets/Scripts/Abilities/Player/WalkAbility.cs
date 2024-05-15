@@ -15,9 +15,9 @@ namespace JAM.Abilites
             base.HandleInput();
             // TODO: add some logic for input
         }
-        public override void HandleAbility()
+        public override void HandleAbilityInLoop()
         {
-            base.HandleAbility();
+            base.HandleAbilityInLoop();
             // TODO: add some logic for ability in loop
         }
         public override void PhysicsUpdate()

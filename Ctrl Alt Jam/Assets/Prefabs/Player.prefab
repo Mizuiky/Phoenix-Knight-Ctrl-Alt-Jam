@@ -213,16 +213,16 @@ MonoBehaviour:
     m_ActionName: PlayerMap/Movement[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d,/Keyboard/upArrow,/Keyboard/downArrow,/Keyboard/leftArrow,/Keyboard/rightArrow]
   - m_PersistentCalls:
       m_Calls: []
-    m_ActionId: 797a95ab-0aff-45d0-82d5-ccf79ca6bdcd
-    m_ActionName: PlayerMap/LightUp[/Keyboard/1]
+    m_ActionId: dd662880-75a0-416a-8373-508000133442
+    m_ActionName: SkillMap/LightUp[/Keyboard/1]
   - m_PersistentCalls:
       m_Calls: []
-    m_ActionId: b3b1d697-ad72-41f0-a5e0-9715d50a7d36
-    m_ActionName: PlayerMap/FireBall[/Keyboard/2]
+    m_ActionId: 3797bfa9-008e-48ae-a3f3-710487644926
+    m_ActionName: SkillMap/FireBall[/Keyboard/2]
   - m_PersistentCalls:
       m_Calls: []
-    m_ActionId: 8953cdfc-c5f4-4eee-860f-ebd479bc30cd
-    m_ActionName: PlayerMap/PlaySkill[/Keyboard/space]
+    m_ActionId: 0130948a-3bc2-4370-8658-dd511e7073e8
+    m_ActionName: SkillMap/PlaySkill[/Keyboard/space]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: PlayerMap
@@ -255,7 +255,7 @@ Transform:
   m_GameObject: {fileID: 917071479992502418}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.215, z: 0}
+  m_LocalPosition: {x: 0, y: 0.313, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -273,9 +273,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c14265485336724c91d653dd53c6300, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  state: 0
-  dectionRadius: 0.5
-  detectionLayer:
+  _state: 0
+  _dectionRadius: 0.5
+  _detectionLayer:
     serializedVersion: 2
     m_Bits: 8
 --- !u!114 &7689027401248922915
@@ -427,7 +427,7 @@ MonoBehaviour:
   - {x: 0.102415085, y: -0.1625787, z: 0}
   m_ShapePathHash: -1667559883
   m_Mesh: {fileID: 0}
-  m_InstanceId: -1482
+  m_InstanceId: -1352
   m_LocalBounds:
     m_Center: {x: -0.008487701, y: -0.124023914, z: 0}
     m_Extent: {x: 0.13201714, y: 0.054662704, z: 0}
