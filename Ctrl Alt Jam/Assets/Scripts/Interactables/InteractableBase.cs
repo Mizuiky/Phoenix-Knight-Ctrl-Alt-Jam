@@ -1,14 +1,22 @@
 using UnityEngine;
 
-public class InteractableBase : MonoBehaviour, Interactable
+public class InteractableBase : MonoBehaviour, IInteractable
 {
     [SerializeField] private string _songName;
-    [SerializeField] private string _tagToCompare;
 
-    public void OnTriggerEnter2D(Collider2D collision)
+    public void Start()
     {
-        if (collision.CompareTag(_tagToCompare))
-            Interact();
+        Init();
+    }
+
+    public virtual void Init()
+    {
+
+    }
+
+    public virtual void Reset()
+    {
+        
     }
 
     public virtual void Interact()
