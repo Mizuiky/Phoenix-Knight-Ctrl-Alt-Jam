@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6024536804741631146}
   - component: {fileID: 6824586612902221065}
   - component: {fileID: 8895522098880685930}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Render
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -169,7 +169,7 @@ GameObject:
   - component: {fileID: 6728064578607906903}
   - component: {fileID: 8853719639647822306}
   - component: {fileID: 4969644553608153877}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: InteractableTorch
   m_TagString: Interactable
   m_Icon: {fileID: 0}
@@ -205,12 +205,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _songName: 
-  _tagToCompare: Player
   _animator: {fileID: 6824586612902221065}
-  _particle: {fileID: 0}
-  _torchLight: {fileID: 0}
+  _torchLight: {fileID: 8895522098880685930}
   _collider: {fileID: 8853719639647822306}
-  _timeToLightUp: 0
+  _hasLightUp: 0
 --- !u!58 &8853719639647822306
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -267,7 +265,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6930956293229270901}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}

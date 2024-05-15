@@ -1,29 +1,34 @@
-using System.Collections;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 public class InteractableTorch : InteractableBase
 {
     [SerializeField] private Animator _animator;
-    [SerializeField] private ParticleSystem _particle;
-    [SerializeField] private Light _torchLight;
+    [SerializeField] private Light2D _torchLight;
     [SerializeField] private Collider2D _collider;
-    [SerializeField] private float _timeToLightUp;
+
+    [SerializeField] private bool _hasLightUp;
    
-    public override void Interact()
+    public override void Init()
     {
-        StartCoroutine(LightUp());
+        _torchLight.intensity = 0f;
+        _hasLightUp = false;
     }
 
-    public IEnumerator LightUp()
+    public override void Interact()
     {
+        if(!_hasLightUp)
+            LightUp();
+    }
 
-        yield return new WaitForSeconds(_timeToLightUp);
-        EndInteraction();
+    public void LightUp()
+    {
+        _animator.SetTrigger("TurnOn");
+        _hasLightUp = true;
     }
 
     public override void EndInteraction()
     {
-        base.EndInteraction();
+        base.EndInteraction();     
     }
-
 }
