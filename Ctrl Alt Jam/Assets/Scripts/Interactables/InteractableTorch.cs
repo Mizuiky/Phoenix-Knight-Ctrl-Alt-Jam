@@ -8,6 +8,7 @@ public class InteractableTorch : InteractableBase
     [SerializeField] private Collider2D _collider;
 
     [SerializeField] private bool _hasLightUp;
+    public bool HasLightUp { get { return _hasLightUp; } }
    
     public override void Init()
     {
