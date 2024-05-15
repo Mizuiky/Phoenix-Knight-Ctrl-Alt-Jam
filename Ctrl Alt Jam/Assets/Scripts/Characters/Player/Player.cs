@@ -1,5 +1,6 @@
 using JAM.Abilites;
 using JAM.InputManagement;
+using JAM.Projectils;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -12,6 +13,7 @@ namespace JAM.Characters
     public class Player : CharacterBase
     {
        [SerializeField] private PlayerAbilityController _abilityController;
+       [SerializeField] private MagicLauncher _magicLauncher;
 
        private PlayerInputActions _playerActions;
        private InputAction _movement;
@@ -36,6 +38,8 @@ namespace JAM.Characters
         public void Init()
         {
             _abilityController.Init(_playerActions);
+            _magicLauncher.Init(this);
+
             //playerActions.PlayerMap.Movement.performed += SetMovement;              
         }
 
