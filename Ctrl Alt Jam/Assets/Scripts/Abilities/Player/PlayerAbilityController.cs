@@ -1,12 +1,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using UnityEngine.InputSystem;
 
 namespace JAM.Abilites
 {
     public class PlayerAbilityController : MonoBehaviour
     {
         List<IPlayerAbility> _abilities = new List<IPlayerAbility>();
+        private AbilityType _currentActiveAbility;
+
+        private InputAction _playSkill;
 
         void OnValidate()
         {
@@ -21,11 +25,49 @@ namespace JAM.Abilites
 
         public void Init(PlayerInputActions inputActions)
         {
+            _playSkill = inputActions.SkillMap.PlaySkill;
+            _playSkill.Enable();
+
+            _playSkill.performed += PlayAbility;
+
+            _currentActiveAbility = AbilityType.None;
+
             foreach (IPlayerAbility ability in _abilities)
             {
+                ability.OnActivateAbility += SetCurrentActiveAbility;
                 ability.SetInput(inputActions);
                 ability.Enter();
                 ability.HandleInput();
+            }
+        }
+
+        public void SetCurrentActiveAbility(AbilityType type)
+        {
+            _currentActiveAbility = type;
+
+            Debug.Log("Set current ability");
+
+            foreach (IPlayerAbility ability in _abilities)
+            {
+                if (ability.Type != _currentActiveAbility)
+                {
+                    ability.ResetAbility();
+                }
+            }
+        }
+
+        private void PlayAbility(InputAction.CallbackContext value)
+        {
+            foreach (IPlayerAbility ability in _abilities)
+            {
+                Debug.Log("state" + ability.State.ToString());
+
+                if (ability.Type == _currentActiveAbility && ability.State == AbiliteState.Active)
+                {
+                    Debug.Log("play ability" + ability.Type.ToString());
+                    ability.HandleAbility();
+                    return;
+                }                  
             }
         }
 
@@ -33,7 +75,7 @@ namespace JAM.Abilites
         {
             foreach (IPlayerAbility ability in _abilities)
             {
-                ability.HandleAbility();
+                ability.HandleAbilityInLoop();
             }
         }
 

@@ -15,7 +15,6 @@ namespace JAM.Characters
 
        private PlayerInputActions _playerActions;
        private InputAction _movement;
-       private InputAction _skills;
 
         public override void Awake()
         {
@@ -36,7 +35,6 @@ namespace JAM.Characters
 
         public void Init()
         {
-
             _abilityController.Init(_playerActions);
             //playerActions.PlayerMap.Movement.performed += SetMovement;              
         }
