@@ -1,32 +1,20 @@
-using UnityEngine;
+using JAM.Abilites;
 using JAM.Characters;
 using JAM.InputManagement;
+using UnityEngine;
 
 namespace JAM.Abilites
 {
-    public interface IAbility
-    {
-        void Enter();
-        void HandleInput();
-        void InternalInput();
-        void HandleAbility();
-        void PhysicsUpdate();
-        void Exit();
-    }
-
-    public enum AbiliteState
-    {
-        Ready,
-        Active,
-        Cooldown
-    }
-
-    public abstract class AbilityBase<T> : MonoBehaviour, IAbility
+    public abstract class CoolDownAbilityBase<T> : MonoBehaviour, IPlayerAbility, ICoolDownAbility
     {
         private string abilityName = typeof(T).Name.Replace("Ability", "");
         [SerializeField] protected AbiliteState state = AbiliteState.Ready;
-        [SerializeField] protected float cooldownTime;
-        [SerializeField] protected float activeTime;
+
+        [SerializeField] private float _cooldowTime;
+        [SerializeField] private float _activeTime;
+
+        public float CoolDownTime { get { return _cooldowTime; } }
+        public float ActiveTime { get { return _activeTime; } }
 
         protected CharacterBase character;
         protected InputHandler input;
@@ -34,7 +22,13 @@ namespace JAM.Abilites
         private void Awake()
         {
             character = GetComponent<CharacterBase>();
+            character = GetComponentInParent<CharacterBase>();
             input = character.characterComponents.input;
+        }
+
+        public void SetInput(PlayerInputActions actions)
+        {
+            throw new System.NotImplementedException();
         }
 
         public virtual void Enter() { }
@@ -54,13 +48,13 @@ namespace JAM.Abilites
                     state = AbiliteState.Cooldown;
                     break;
                 case AbiliteState.Cooldown:
-                    if (cooldownTime >= 0)
+                    if (_cooldowTime >= 0)
                     {
-                        cooldownTime -= Time.deltaTime;
+                        _cooldowTime -= Time.deltaTime;
                         return;
                     }
                     state = AbiliteState.Ready;
-                    cooldownTime = activeTime;
+                    _cooldowTime = _activeTime;
                     break;
             }
         }
