@@ -1,6 +1,5 @@
 using UnityEngine;
 using JAM.Characters;
-using System;
 
 namespace JAM.Movements
 {
