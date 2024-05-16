@@ -5,7 +5,7 @@ namespace JAM.Projectils
 {
     public interface IProjectil
     {
-        public void Init(Vector3 direction, Vector3 position);
+        public void InitializeProjectil(Vector3 position, Transform direction);
     }
 }
 
