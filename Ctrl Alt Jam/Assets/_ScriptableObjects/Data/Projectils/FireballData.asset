@@ -16,5 +16,5 @@ MonoBehaviour:
   projectilParticle: {fileID: 0}
   damage: 2
   tagToDamage: Enemy
-  lifeTime: 10
+  lifeTime: 5
   speed: 5
