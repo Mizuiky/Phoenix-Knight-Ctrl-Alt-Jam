@@ -2,6 +2,7 @@ using UnityEngine;
 using JAM.Characters;
 using System;
 using UnityEngine.InputSystem;
+using JAM.Projectils;
 
 namespace JAM.Abilites
 {
@@ -64,7 +65,7 @@ namespace JAM.Abilites
         public void ResetAbility()
         {
             _state = AbiliteState.Ready;
-            Debug.Log("reset ability");
+            Debug.Log("reset ability" + _abilityName);
             //update ui
         }
 
