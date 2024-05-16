@@ -59,11 +59,6 @@ namespace JAM.Characters
             characterComponents.playerMovement.SetMovementInput(_movementInput);
         }
 
-        public void OnActivateFireBallSkill(InputAction.CallbackContext value)
-        {
-            Debug.Log("fIREBALL");
-        }
-
         public void Damage()
         {
             throw new System.NotImplementedException();

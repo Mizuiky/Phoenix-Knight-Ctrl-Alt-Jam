@@ -1,5 +1,6 @@
 using UnityEngine;
 using JAM.Characters;
+using System.Collections;
 
 namespace JAM.Projectils
 {
@@ -12,6 +13,7 @@ namespace JAM.Projectils
         private GameObject _obj;
 
         private Vector3 _direction;
+        private Coroutine _coroutine;
 
         public virtual void Init(CharacterBase character)
         {
@@ -19,17 +21,16 @@ namespace JAM.Projectils
             _direction = Vector3.zero;
         }
 
-        private void Start()
+        public void StartToLaunch()
         {
-
+            if (_coroutine != null) return;
+            StartCoroutine(LaunchCoroutine());
         }
 
-        protected virtual void Update()
+        private IEnumerator LaunchCoroutine()
         {
-            if(Input.GetKeyDown(KeyCode.Alpha3)) 
-            {
-                LaunchProjectil();
-            }
+            LaunchProjectil();
+            yield return new WaitForSeconds(_timeBetweenProjecteis);
         }
 
         protected virtual void LaunchProjectil()
