@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -37,8 +36,6 @@ namespace JAM.Abilites
 
         public override void HandleAbility()
         {
-            Debug.Log("Get Torch in range"); 
-
             int count = Physics2D.OverlapCircleNonAlloc(transform.position, _dectionRadius, _results, _detectionLayer);
 
             if (count > 0)
@@ -50,8 +47,6 @@ namespace JAM.Abilites
                     return;
                 }     
             }
-
-            Debug.Log("Torch not in range");
         }
 
         private void OnDrawGizmos()
