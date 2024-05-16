@@ -12,9 +12,10 @@ namespace JAM.Movement
         
         protected Vector2 _movementInput = Vector3.zero;
         private Vector2 _movementDirection;
-        private Vector2 _velocity;
-
+        public Vector2 MovementDirection { get { return _movementDirection; } }
+       
         private float _currentVelocity = 0;
+        private Vector2 _velocity;
 
         private void Awake()
         {

@@ -3,6 +3,7 @@ using JAM.Projectils;
 using JAM.Movement;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.WSA;
 
 namespace JAM.Characters
 {
@@ -13,16 +14,17 @@ namespace JAM.Characters
     public class Player : CharacterBase, IDamageable
     {
        [SerializeField] private PlayerAbilityController _abilityController;
-       [SerializeField] private ProjectilLauncher _magicLauncher;
+       [SerializeField] private ProjectilLauncherBase _launcher;
 
        private PlayerInputActions _playerActions;
-       private InputAction _movement;
+       private InputAction _movement;      
        private Vector2 _movementInput;
 
         public override void Awake()
         {
             base.Awake();
             _playerActions = new PlayerInputActions();
+            _launcher = GetComponentInChildren<ProjectilLauncherBase>();
         }
 
         public void OnEnable()
@@ -42,7 +44,7 @@ namespace JAM.Characters
         public void Init()
         {
             _abilityController.Init(_playerActions);
-            _magicLauncher.Init(this);             
+            _launcher.Init(this);             
         }
 
         public void SetInput(InputAction.CallbackContext value)

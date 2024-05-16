@@ -17,4 +17,4 @@ MonoBehaviour:
   damage: 2
   tagToDamage: Enemy
   lifeTime: 10
-  speed: 2
+  speed: 5
