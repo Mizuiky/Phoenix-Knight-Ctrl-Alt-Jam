@@ -3,29 +3,28 @@ using JAM.Characters;
 
 namespace JAM.Projectils
 {
-    public class ProjectilLauncher : MonoBehaviour
+    public class ProjectilLauncherBase : MonoBehaviour
     {
         [SerializeField] private Transform _firePosition;
         [SerializeField] private float _timeBetweenProjecteis;
 
-        private Player _player;
+        private CharacterBase _character;
         private GameObject _obj;
 
         private Vector3 _direction;
-        public Vector2 Direction { get { return _direction; } set {  _direction = value; } }
 
-        public void Init(Player player)
+        public virtual void Init(CharacterBase character)
         {
-            _player = player;
+            _character = character;
             _direction = Vector3.zero;
         }
 
-        void Start()
+        private void Start()
         {
 
         }
 
-        void Update()
+        protected virtual void Update()
         {
             if(Input.GetKeyDown(KeyCode.Alpha3)) 
             {
@@ -33,14 +32,15 @@ namespace JAM.Projectils
             }
         }
 
-        private void LaunchProjectil()
+        protected virtual void LaunchProjectil()
         {
+            _direction = _character.characterComponents.movement.MovementDirection;
             _obj = CtrlAltJamGameManager.Instance.ProjectilPool.GetObject();
 
             IProjectil projectil = _obj.GetComponent<IProjectil>();
             if (projectil == null) return;
 
-            projectil.InitializeProjectil(_firePosition.position, _direction, _player.transform.rotation);
+            projectil.InitializeProjectil(_firePosition.position, _direction, _character.transform.rotation);
         }
     }
 }
