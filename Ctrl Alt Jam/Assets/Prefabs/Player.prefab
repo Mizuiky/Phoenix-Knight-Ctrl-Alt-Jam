@@ -11,9 +11,8 @@ GameObject:
   - component: {fileID: 8439675587874994912}
   - component: {fileID: 7337637981007612643}
   - component: {fileID: 1101847316027782008}
-  - component: {fileID: 985793821451134341}
-  - component: {fileID: 3327394525493213055}
   - component: {fileID: 8339079895078972804}
+  - component: {fileID: 4494544764690723371}
   - component: {fileID: 707532242989159969}
   - component: {fileID: 617820360853082173}
   - component: {fileID: 9052541241104001451}
@@ -81,49 +80,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7efc963be2081f48a51b49549b1e72a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementVelocityNormal:
-    m_PersistentCalls:
-      m_Calls: []
-  movementPositionNormal:
-    m_PersistentCalls:
-      m_Calls: []
-  movementVelocityAbility:
-    m_PersistentCalls:
-      m_Calls: []
-  movementPositionAbility:
-    m_PersistentCalls:
-      m_Calls: []
-  disableAbility:
-    m_PersistentCalls:
-      m_Calls: []
   characterData: {fileID: 11400000, guid: 54e45fd9821c3614c8c29af48dead0d4, type: 2}
   _abilityController: {fileID: 7689027401248922915}
   _magicLauncher: {fileID: 1025709145268416961}
---- !u!114 &985793821451134341
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 110294123129963117}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e84f610920233924db977f0010f0aa91, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &3327394525493213055
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 110294123129963117}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2013f80aa407f0946b5a3d6d243a8bc3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isAbility: 0
 --- !u!114 &8339079895078972804
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -134,6 +93,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d5f335154c601944bae2e232abf26cee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &4494544764690723371
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 110294123129963117}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f61c87f6255585438ea2fdadd1df2b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!210 &707532242989159969
@@ -429,7 +400,7 @@ MonoBehaviour:
   - {x: 0.102415085, y: -0.1625787, z: 0}
   m_ShapePathHash: -1667559883
   m_Mesh: {fileID: 0}
-  m_InstanceId: -56018
+  m_InstanceId: -2004
   m_LocalBounds:
     m_Center: {x: -0.008487701, y: -0.124023914, z: 0}
     m_Extent: {x: 0.13201714, y: 0.054662704, z: 0}
@@ -555,7 +526,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a3978cecff373444a5abc0860e34937, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _projectil: {fileID: 0}
   _firePosition: {fileID: 9040635474526413117}
   _timeBetweenProjecteis: 0.05
 --- !u!1 &7870180633067406080
