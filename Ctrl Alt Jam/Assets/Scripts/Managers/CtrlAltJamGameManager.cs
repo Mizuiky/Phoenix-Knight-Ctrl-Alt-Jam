@@ -1,4 +1,5 @@
 using Unity.VisualScripting;
+using JAM.Pools;
 using UnityEngine;
 
 public class CtrlAltJamGameManager : Singleton<CtrlAltJamGameManager>
@@ -8,12 +9,16 @@ public class CtrlAltJamGameManager : Singleton<CtrlAltJamGameManager>
     [SerializeField] private UIManager _uiManager;
     [SerializeField] private TextAsset _dialogFile;
 
+    [SerializeField] private PoolBase _ProjectilPool;
+    [SerializeField] private PoolBase _mobPool;
+
     private InitializeDialogs _initializeDialogs;
 
     public DialogManager DialogController { get { return _dialogManager; } }
     public InitializeDialogs InitializeDialogs { get { return _initializeDialogs; } }
     public LocalizationManager LocalizationManager { get { return _localizationManager; } }
     public UIManager UIController { get { return _uiManager; } }
+    public PoolBase ProjectilPool { get { return _ProjectilPool; } }
 
     public void Start()
     {
@@ -30,5 +35,7 @@ public class CtrlAltJamGameManager : Singleton<CtrlAltJamGameManager>
         _uiManager?.Init();
 
         _dialogManager?.Init();
+
+        _ProjectilPool.Init();
     }
 }

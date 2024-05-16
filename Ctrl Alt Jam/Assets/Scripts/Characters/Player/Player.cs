@@ -10,7 +10,7 @@ namespace JAM.Characters
     [DisallowMultipleComponent]
     [DefaultExecutionOrder(-1)]
     [RequireComponent(typeof(InputHandler))]
-    public class Player : CharacterBase
+    public class Player : CharacterBase, IDamageable
     {
        [SerializeField] private PlayerAbilityController _abilityController;
        [SerializeField] private MagicLauncher _magicLauncher;
@@ -56,6 +56,16 @@ namespace JAM.Characters
         public void PlaySkill(InputAction.CallbackContext value)
         {
             Debug.Log("Space pressed");
+        }
+
+        public void Damage()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void Damage(Vector2 direction)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }
