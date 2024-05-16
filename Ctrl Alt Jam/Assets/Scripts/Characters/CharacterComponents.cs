@@ -1,8 +1,7 @@
 using UnityEngine;
-using JAM.Movements;
 using System;
 using JAM.Animations;
-using JAM.InputManagement;
+using JAM.Movement;
 
 namespace JAM.Characters
 {
@@ -15,13 +14,13 @@ namespace JAM.Characters
         public Animator characterAnimator { private set; get; }
         public AnimatorController animatorController { private set; get; }
         public SpriteRenderer spriteRenderer { private set; get; }
-        public InputHandler input { private set; get; }
+        public MovementBase movement { private set; get; }
+        public IPlayerMovement playerMovement { private set; get; }
 
         #endregion Components Unity
 
         #region Others components
         public CharacterBase character { private set; get; }
-        public Movement movement { private set; get; }
 
         #endregion
 
@@ -32,8 +31,8 @@ namespace JAM.Characters
             characterAnimator = character.GetComponentInChildren<Animator>();
             animatorController = character.GetComponentInChildren<AnimatorController>();
             spriteRenderer = character.GetComponentInChildren<SpriteRenderer>();
-            movement = character.GetComponentInChildren<Movement>();
-            input = character.GetComponent<InputHandler>();
+            movement = character.GetComponent<MovementBase>();
+            playerMovement = movement.GetComponent<IPlayerMovement>();
         }
     }
 }
