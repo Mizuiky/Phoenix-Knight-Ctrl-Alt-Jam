@@ -32,11 +32,11 @@ namespace JAM.Projectils
             gameObject.SetActive(false);            
         }
 
-        public virtual void InitializeProjectil(Vector3 position, Transform direction)
+        public virtual void InitializeProjectil(Vector3 position, Vector2 direction, Quaternion rotation)
         {
             transform.localPosition = position;
-            transform.rotation = direction.rotation;
-            _direction = direction.position;
+            transform.localRotation = rotation;
+            _direction = direction;
 
             Activate();
         }
