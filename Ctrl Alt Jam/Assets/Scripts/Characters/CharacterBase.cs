@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.Events;
 using System;
 
 namespace JAM.Characters
@@ -14,13 +13,6 @@ namespace JAM.Characters
     [Serializable]
     public abstract class CharacterBase : MonoBehaviour
     {
-        [HideInInspector] public CharacterEvents characterEvents;
-        [HideInInspector] public UnityEvent<Vector2> movementVelocityNormal;
-        [HideInInspector] public UnityEvent<Vector2> movementPositionNormal;
-        [HideInInspector] public UnityEvent<Vector2> movementVelocityAbility;
-        [HideInInspector] public UnityEvent<Vector2> movementPositionAbility;
-        [HideInInspector] public UnityEvent disableAbility;
-
         [Tooltip("Sets character data.")]
         public CharacterData characterData;
 
@@ -35,7 +27,6 @@ namespace JAM.Characters
         private void LoadComponents()
         {
             characterComponents = new CharacterComponents(this);
-            characterEvents = new CharacterEvents(this);
         }
 
         private void OnValidate()
