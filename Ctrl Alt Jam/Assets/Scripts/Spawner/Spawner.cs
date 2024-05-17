@@ -12,22 +12,17 @@ namespace JAM.Spawner
 
         public void Start()
         {
-            spawnerCollider = GetComponent<Collider2D>();
             enemy1 = Resources.Load<GameObject>("Enemys/shadow enemy 1");
 
             if (enemy1 == null)
             {
                 Debug.LogError("Prefab não encontrado na pasta Resources.");
-
             }
-
             EventSpawner.instancia.OnRoomEnter += SpawEnemys;
-            Debug.Log("Ativar");
         }
 
         private void SpawEnemys(int id)
         {
-
             if (id == 1)
             {
                 this.SpawnEnemysFirstRoom();

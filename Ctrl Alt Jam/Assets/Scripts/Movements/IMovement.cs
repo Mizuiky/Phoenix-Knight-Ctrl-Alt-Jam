@@ -8,4 +8,4 @@ namespace JAM.Movements
         UnityEvent<Vector2> OnMovementVelocityNormal();
         UnityEvent<Vector2> OnMovementPositionNormal();
     }
-}
+}
