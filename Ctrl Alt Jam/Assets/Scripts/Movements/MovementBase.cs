@@ -25,6 +25,13 @@ namespace JAM.Movement
             _animatorController = _character.characterComponents.animatorController;
         }
 
+        public void Reset()
+        {
+            _movementInput = Vector2.zero;
+            _movementDirection = Vector3.zero;
+            _currentVelocity = 0f;
+        }
+
         protected virtual void Update()
         {
             _animatorController.Play(_movementInput * _currentVelocity);

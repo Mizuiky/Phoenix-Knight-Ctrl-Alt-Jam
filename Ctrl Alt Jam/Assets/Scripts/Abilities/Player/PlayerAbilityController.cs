@@ -41,6 +41,14 @@ namespace JAM.Abilites
             }
         }
 
+        public void Reset()
+        {
+            foreach (IPlayerAbility ability in _abilities)
+            {
+                ability.ResetAbility();
+            }
+        }
+
         public void SetCurrentActiveAbility(AbilityType type)
         {
             _currentActiveAbility = type;

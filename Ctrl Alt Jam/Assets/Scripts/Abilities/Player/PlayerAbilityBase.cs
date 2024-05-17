@@ -31,7 +31,7 @@ namespace JAM.Abilites
 
         protected AbilityType _abilityType;
         public AbilityType Type { get { return _abilityType; } }
-        public AbiliteState State { get { return _state; } }
+        public AbiliteState State { get { return _state; } set { _state = value; } }
 
         public event Action<AbilityType> OnActivateAbility;
        
@@ -62,7 +62,7 @@ namespace JAM.Abilites
             //update ui conforme for ready ou active
         }
 
-        public void ResetAbility()
+        public virtual void ResetAbility()
         {
             _state = AbiliteState.Ready;
             Debug.Log("reset ability" + _abilityName);

@@ -9,6 +9,7 @@ namespace JAM.Projectils
         public ParticleSystem projectilParticle;
 
         public int damage;
+        public float damagePercent;
         public string tagToDamage;
         public float lifeTime;
         public float speed;
