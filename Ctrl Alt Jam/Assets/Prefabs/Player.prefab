@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1101847316027782008}
   - component: {fileID: 8339079895078972804}
   - component: {fileID: 4494544764690723371}
+  - component: {fileID: 4232939954420903823}
   - component: {fileID: 707532242989159969}
   - component: {fileID: 617820360853082173}
   - component: {fileID: 9052541241104001451}
@@ -108,6 +109,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f61c87f6255585438ea2fdadd1df2b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &4232939954420903823
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 110294123129963117}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f49c7fc8f3f825b4b9f46951dda76c3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maxLife: 10
 --- !u!210 &707532242989159969
 SortingGroup:
   m_ObjectHideFlags: 0
@@ -415,7 +429,7 @@ MonoBehaviour:
   - {x: 0.102415085, y: -0.1625787, z: 0}
   m_ShapePathHash: -1667559883
   m_Mesh: {fileID: 0}
-  m_InstanceId: -1348
+  m_InstanceId: -1362
   m_LocalBounds:
     m_Center: {x: -0.008487701, y: -0.124023914, z: 0}
     m_Extent: {x: 0.13201714, y: 0.054662704, z: 0}
@@ -542,7 +556,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _firePosition: {fileID: 9040635474526413117}
-  _timeBetweenProjecteis: 1
+  _data: {fileID: 11400000, guid: a487064b70957f74d8cc6f868a6a4c35, type: 2}
 --- !u!1 &7870180633067406080
 GameObject:
   m_ObjectHideFlags: 0
