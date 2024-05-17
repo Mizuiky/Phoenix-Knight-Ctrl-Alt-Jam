@@ -82,6 +82,17 @@ namespace JAM.Characters
             //feedback de dano
             //som de dano
             _healable.OnDamage(damage);
+<<<<<<< Updated upstream
+=======
+        }
+
+        public void OnKill()
+        {
+            //setando player morto e avisando tudo do mundo disso para poder parar
+            //som de player morrendo
+            //animacao player morrendo
+            //animacao player voltando das cinzas depois de um tempo com a musica da nati
+>>>>>>> Stashed changes
         }
 
         public void OnKill()
