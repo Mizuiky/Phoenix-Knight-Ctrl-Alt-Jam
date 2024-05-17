@@ -22,6 +22,8 @@ namespace JAM.Characters
        private IHealable _healable;
 
        private Vector2 _movementInput;
+       private Transform _currentPosition;
+
        public override void Awake()
        {
            base.Awake();
@@ -54,8 +56,11 @@ namespace JAM.Characters
 
         public void Reset()
         {
+            _movement.Reset();
             _healable.Reset();
             _abilityController.Reset();
+
+            SetPosition();
         }
 
         public void SetInput(InputAction.CallbackContext value)
@@ -82,6 +87,11 @@ namespace JAM.Characters
             //feedback de dano
             //som de dano
             _healable.OnDamage(damage);
+        }
+
+        private void SetPosition()
+        {
+
         }
 
         public void OnKill()
