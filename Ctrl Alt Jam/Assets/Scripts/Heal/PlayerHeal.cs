@@ -3,7 +3,7 @@ namespace JAM.Heal
 {
     public class PlayerHeal : HealBase
     {
-        public virtual void Onhealing()
+        public override void OnHealing()
         {
             base.OnHealing();
             //particula de healing?

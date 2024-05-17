@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class DialogBox : MonoBehaviour
 {
     [SerializeField] private DialogOption[] _options;
+    [SerializeField] private GameObject _optionsContainer;
 
     public TextMeshProUGUI characterName;
     public TextMeshProUGUI dialog;
@@ -28,7 +29,12 @@ public class DialogBox : MonoBehaviour
 
         gameObject.SetActive(isVisible);
         dialogBackground.gameObject.SetActive(isVisible);
-        portrait.enabled = isVisible;
+        portrait.enabled = isVisible;    
+    }
+
+    public void EnableOptionsContainer(bool enable)
+    {
+        _optionsContainer.gameObject.SetActive(enable);
     }
 
     public void EnableNextButton(bool enable)

@@ -29,6 +29,7 @@ namespace JAM.Characters
            base.Awake();
            _playerActions = new PlayerInputActions();
            _launcher = GetComponentInChildren<ProjectilLauncherBase>();
+           _healable = GetComponent<IHealable>();
        }
 
        public void OnEnable()
@@ -47,11 +48,21 @@ namespace JAM.Characters
             Init();
         }
 
+        public void Update()
+        {
+            if(Input.GetKeyDown(KeyCode.H))
+            {
+                Debug.Log("cliquei h");
+                Damage(4);
+            }
+        }
+
         public void Init()
         {
             playerMovement = characterComponents.movement.GetComponent<IPlayerMovement>();
             _abilityController.Init(_playerActions);
-            _launcher.Init(this);             
+            _launcher.Init(this);
+            _healable.Init();
         }
 
         public void Reset()
@@ -79,6 +90,7 @@ namespace JAM.Characters
         {
             //feedback de dano
             //som de dano
+            Debug.Log("Damage");
             _healable.OnDamage(damage);
         }
 

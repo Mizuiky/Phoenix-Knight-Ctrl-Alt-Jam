@@ -506,7 +506,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1369994085589201735
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1043,7 +1043,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &5279172246053092413
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1082,6 +1082,7 @@ MonoBehaviour:
   - {fileID: 1269433168443191994}
   - {fileID: 7687604300976355268}
   - {fileID: 3795266885874276985}
+  _optionsContainer: {fileID: 3609856451416268196}
   characterName: {fileID: 4006226197533541223}
   dialog: {fileID: 4096810952918161678}
   nextButton: {fileID: 1013636035308198569}

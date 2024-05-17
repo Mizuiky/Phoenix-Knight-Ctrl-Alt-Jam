@@ -5,7 +5,7 @@ namespace JAM.Heal
     public interface IHealable
     {
         public event Action OnKill;
-        public void Init(float startLife);
+        public void Init();
         public void Reset();
         public void OnDamage(float damage);
     }
