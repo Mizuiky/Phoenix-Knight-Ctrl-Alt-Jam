@@ -33,7 +33,7 @@ namespace JAM.Abilites
 
         public override void HandleAbility()
         {
-            _launcher.StartToLaunch();
+            _launcher.LaunchProjectil();
         }
     }
 }

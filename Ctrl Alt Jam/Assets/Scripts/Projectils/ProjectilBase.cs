@@ -10,6 +10,7 @@ namespace JAM.Projectils
         
         private Vector3 _direction;
         private float _passedTime;
+        private float _damagePercent;
 
         public void Update()
         {
@@ -28,6 +29,7 @@ namespace JAM.Projectils
             _passedTime = _data.lifeTime;
             _spriteRenterer.sprite = _data.sprite;
             transform.rotation = Quaternion.identity;
+            _damagePercent = _data.damage * _data.damagePercent;
 
             gameObject.SetActive(false);            
         }
@@ -54,7 +56,7 @@ namespace JAM.Projectils
             {
                 IDamageable damageable = collision.GetComponent<IDamageable>();
                 if (damageable != null)
-                    damageable.Damage();
+                    damageable.Damage(_damagePercent);
             }
         }
 
