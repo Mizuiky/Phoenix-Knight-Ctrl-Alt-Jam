@@ -91,4 +91,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _dialogRoot: 1
-  _dialogKey: 32
+  _dialogKey: 101
