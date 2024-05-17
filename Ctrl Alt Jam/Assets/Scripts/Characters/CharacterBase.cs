@@ -19,6 +19,9 @@ namespace JAM.Characters
         [Tooltip("Gets character components.")]
         public CharacterComponents characterComponents;
 
+        private bool _isAlive = false;
+        public bool IsAlive { get { return _isAlive; } }
+
         public virtual void Awake()
         {
             LoadComponents();

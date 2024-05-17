@@ -7,13 +7,13 @@ namespace JAM.Projectils
     public class ProjectilLauncherBase : MonoBehaviour
     {
         [SerializeField] private Transform _firePosition;
-        [SerializeField] private float _timeBetweenProjecteis;
+        [SerializeField] private LauncherData _data;
 
         private CharacterBase _character;
         private GameObject _obj;
 
         private Vector3 _direction;
-        private Coroutine _coroutine;
+        private Coroutine _currentCoroutine;
 
         public virtual void Init(CharacterBase character)
         {
@@ -21,19 +21,19 @@ namespace JAM.Projectils
             _direction = Vector3.zero;
         }
 
-        public void StartToLaunch()
-        {
-            if (_coroutine != null) return;
-            StartCoroutine(LaunchCoroutine());
-        }
+        //public void StartToLaunch()
+        //{
+        //    if (_currentCoroutine != null) StopCoroutine(_currentCoroutine);
+        //    StartCoroutine(LaunchCoroutine());
+        //}
 
-        private IEnumerator LaunchCoroutine()
-        {
-            LaunchProjectil();
-            yield return new WaitForSeconds(_timeBetweenProjecteis);
-        }
+        //private IEnumerator LaunchCoroutine()
+        //{
+        //    LaunchProjectil();
+        //    yield return new WaitForSeconds(_data.timeBetweenProjectils);
+        //}
 
-        protected virtual void LaunchProjectil()
+        public virtual void LaunchProjectil()
         {
             _direction = _character.characterComponents.movement.MovementDirection;
             _obj = CtrlAltJamGameManager.Instance.ProjectilPool.GetObject();
