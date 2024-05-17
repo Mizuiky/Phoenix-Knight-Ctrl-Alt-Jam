@@ -29,6 +29,7 @@ namespace JAM.Characters
            base.Awake();
            _playerActions = new PlayerInputActions();
            _launcher = GetComponentInChildren<ProjectilLauncherBase>();
+           _healable = GetComponent<IHealable>();
        }
 
        public void OnEnable()
