@@ -49,10 +49,8 @@ namespace JAM.Abilites
 
             foreach (IPlayerAbility ability in _abilities)
             {
-                if (ability.Type != _currentActiveAbility)
-                {
+                if (ability.Type != _currentActiveAbility && ability.State == AbiliteState.Active)
                     ability.ResetAbility();
-                }
             }
         }
 

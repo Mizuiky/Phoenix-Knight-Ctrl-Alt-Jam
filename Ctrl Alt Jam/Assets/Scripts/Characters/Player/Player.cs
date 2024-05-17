@@ -1,31 +1,39 @@
 using JAM.Abilites;
-using JAM.InputManagement;
+using JAM.Projectils;
+using JAM.Movement;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.WSA;
 
 namespace JAM.Characters
 {
     [AddComponentMenu("JAM/Characters/Player")]
     [DisallowMultipleComponent]
     [DefaultExecutionOrder(-1)]
-    [RequireComponent(typeof(InputHandler))]
-    public class Player : CharacterBase
+    [RequireComponent(typeof(PlayerMovementController))]
+    public class Player : CharacterBase, IDamageable
     {
        [SerializeField] private PlayerAbilityController _abilityController;
+       [SerializeField] private ProjectilLauncherBase _launcher;
 
        private PlayerInputActions _playerActions;
-       private InputAction _movement;
+       private InputAction _movement;      
+       private Vector2 _movementInput;
 
         public override void Awake()
         {
             base.Awake();
             _playerActions = new PlayerInputActions();
+            _launcher = GetComponentInChildren<ProjectilLauncherBase>();
         }
 
         public void OnEnable()
         {
             _movement = _playerActions.PlayerMap.Movement;
             _movement.Enable();
+
+            _movement.performed += SetInput;
+            _movement.canceled += ResetInput;
         }
 
         public void Start()
@@ -36,22 +44,36 @@ namespace JAM.Characters
         public void Init()
         {
             _abilityController.Init(_playerActions);
-            //playerActions.PlayerMap.Movement.performed += SetMovement;              
+            _launcher.Init(this);             
         }
 
-        public void SetMovement(InputAction.CallbackContext value)
+        public void SetInput(InputAction.CallbackContext value)
         {
-
+            _movementInput = value.ReadValue<Vector2>();
+            characterComponents.playerMovement.SetMovementInput(_movementInput);
         }
 
-        public void OnActivateFireBallSkill(InputAction.CallbackContext value)
+        public void ResetInput(InputAction.CallbackContext value)
         {
-            Debug.Log("fIREBALL");
+            _movementInput = Vector2.zero;
+            characterComponents.playerMovement.SetMovementInput(_movementInput);
         }
 
-        public void PlaySkill(InputAction.CallbackContext value)
+        public void Damage()
         {
-            Debug.Log("Space pressed");
+            throw new System.NotImplementedException();
+        }
+
+        public void Damage(Vector2 direction)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void OnDisable()
+        {
+            _movement.Disable();
+            _movement.performed -= SetInput;
+            _movement.canceled -= ResetInput;
         }
     }
 }
