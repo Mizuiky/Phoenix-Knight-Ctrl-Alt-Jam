@@ -1,19 +1,22 @@
+using JAM.UI;
 using System;
 using UnityEngine;
 
 namespace JAM.Heal
 {
     public class HealBase : MonoBehaviour, IHealable
-    {   
-        [SerializeField] float _maxLife;
+    {
+        [SerializeField] private float _maxLife;
+
+        [SerializeField] private SliderUpdater _sliderUpdater;
 
         private float _currentlife;
         public event Action OnKill;
 
-        public virtual void Init(float startLife)
-        {
-            _maxLife = startLife;
-            Reset();
+        public virtual void Init()
+        {         
+            _currentlife = _maxLife;
+            _sliderUpdater.Init(_maxLife);
         }
 
         public virtual void Reset()
@@ -24,9 +27,9 @@ namespace JAM.Heal
 
         public void OnDamage(float damage)
         {
-            if(_currentlife > 0)
-                _currentlife -= damage;
-            else
+            _currentlife -= damage;
+
+            if (_currentlife <= 0)
             {
                 _currentlife = 0;
                 OnKill?.Invoke();
@@ -43,7 +46,8 @@ namespace JAM.Heal
 
         private void UpdateUI()
         {
-
+            if(_currentlife >= 0)
+                _sliderUpdater.UpdateSlider(_currentlife);
         }
     }
 }
