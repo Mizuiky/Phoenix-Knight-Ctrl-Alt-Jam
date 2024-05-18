@@ -1,3 +1,4 @@
+using JAM.Characters;
 using JAM.Health;
 using JAM.Movement;
 using JAM.Projectils;
@@ -9,7 +10,7 @@ namespace JAM.Boss
     public enum BossState
     {
         Idle,
-        Wait,
+        Search,
         Chasing,
         Dash,
         MagicAttack,   
@@ -25,15 +26,16 @@ namespace JAM.Boss
 
     public class BossBehavior : MonoBehaviour, IDamageable
     {
-        [SerializeField] private CharacterData _data;
+        [SerializeField] private BossFuriaData _data;
 
-        private Dictionary<BossState, IState> _stateMachine;
-        private IState _currentState;
+        private Dictionary<BossState, IBossState> _stateMachine;
+        private IBossState _currentState;
         private IHealth _health;
 
         private ProjectilLauncherBase _launcher;
-        private GameObject _currentTarget;
-
+        private GameObject _bossTarget;
+        public GameObject BossTarget { get { return _bossTarget; } set { _bossTarget = value; } }
+        
         private bool _isAlive = false;
         public bool IsAlive { get { return _isAlive; } }
 
@@ -51,13 +53,13 @@ namespace JAM.Boss
 
         public void Init()
         {
-            _stateMachine = new Dictionary<BossState, IState>();
+            _stateMachine = new Dictionary<BossState, IBossState>();
             _launcher = GetComponentInChildren<ProjectilLauncherBase>();
             _health = GetComponent<IHealth>();
 
             LoadComponents();
 
-            AddStates();
+            RegisterStates();
         }
 
         private void LoadComponents()
@@ -73,16 +75,17 @@ namespace JAM.Boss
             _currentState = _stateMachine[BossState.Idle];
             _currentState.EnterState();
             _health.Reset();
+            _isAlive = true;
         }
 
-        private void AddStates()
+        private void RegisterStates()
         {
-            _stateMachine.Add(BossState.Idle, new IdleState());
-            _stateMachine.Add(BossState.Wait, new WaitState());
-            _stateMachine.Add(BossState.Chasing, new ChasingState());
-            _stateMachine.Add(BossState.Dash, new DashAttackState());
-            _stateMachine.Add(BossState.MagicAttack, new MagicAttackState());
-            _stateMachine.Add(BossState.Dead, new DeadState());
+            _stateMachine.Add(BossState.Idle, new IdleState(this, _data));
+            _stateMachine.Add(BossState.Search, new SearchState(this, _data));
+            _stateMachine.Add(BossState.Chasing, new ChasingState(this, _data));
+            _stateMachine.Add(BossState.Dash, new DashAttackState(this, _data));
+            _stateMachine.Add(BossState.MagicAttack, new MagicAttackState(this, _data));
+            _stateMachine.Add(BossState.Dead, new DeadState(this, _data));
 
             _currentState = _stateMachine[BossState.Idle];
             _currentState.EnterState();
@@ -100,16 +103,14 @@ namespace JAM.Boss
 
         public void OnChangeState(BossState state)
         {
+            Debug.Log("on change state");
             if(_currentState != null)
                 _currentState.ExitState();
 
             _currentState = _stateMachine[state];
-            _currentState.EnterState();          
-        }
 
-        private void SetAnimation(string trigger)
-        {
-            
+            Debug.Log("current state" + state.ToString());
+            _currentState.EnterState();          
         }
 
         public void Damage(float damage)
@@ -121,9 +122,22 @@ namespace JAM.Boss
 
         }
 
+        public void OnKill()
+        {
+            _isAlive = false;
+            //particula de kill
+            //som de kill
+        }
+
         private void OnApplicationQuit()
         {     
              _currentState.ExitState();            
+        }
+
+        private void OnDrawGizmos()
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireSphere(transform.position, _data.detectionRadius);
         }
     }
 }
