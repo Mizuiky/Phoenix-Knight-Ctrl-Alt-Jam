@@ -1,9 +1,9 @@
-using JAM.Characters;
 using JAM.Health;
 using JAM.Movement;
 using JAM.Projectils;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.WSA;
 
 namespace JAM.Boss
 {
@@ -32,7 +32,6 @@ namespace JAM.Boss
         private IBossState _currentState;
         private IHealth _health;
 
-        private ProjectilLauncherBase _launcher;
         private GameObject _bossTarget;
         public GameObject BossTarget { get { return _bossTarget; } set { _bossTarget = value; } }
         
@@ -43,31 +42,46 @@ namespace JAM.Boss
         public Rigidbody2D rb { private set; get; }
         public Animator animator { private set; get; }
         public BossMovement movement { private set; get; }
+        public ProjectilLauncherBase launcher { private set; get; }
 
         #endregion
+
+        private void Awake()
+        {
+            LoadComponents();
+        }
 
         public void Start()
         {
             Init();   
         }
 
+        public void OnEnable()
+        {
+            _health.OnKill += OnKill;
+        }
+
         public void Init()
         {
-            _stateMachine = new Dictionary<BossState, IBossState>();
-            _launcher = GetComponentInChildren<ProjectilLauncherBase>();
-            _health = GetComponent<IHealth>();
+            _health.Init();
 
-            LoadComponents();
+            _stateMachine = new Dictionary<BossState, IBossState>(); 
+            
+            launcher.Init();
+            //movement.Init(_data);
 
-            RegisterStates();
+            //RegisterStates();
+
+            _isAlive = true;
         }
 
         private void LoadComponents()
         {
+            _health = GetComponent<IHealth>();
             rb = GetComponent<Rigidbody2D>();
             animator = GetComponentInChildren<Animator>();
-            movement  = GetComponent<BossMovement>();
-            movement.Init(_data);
+            movement  = GetComponent<BossMovement>();       
+            launcher = GetComponentInChildren<ProjectilLauncherBase>();
         }
 
         public void Reset()
@@ -93,12 +107,19 @@ namespace JAM.Boss
 
         private void Update()
         {
-            _currentState.HandleStateInLoop();
+            if(Input.GetKeyDown(KeyCode.Tab))
+            {
+                OnCastMagic();
+            }
+
+            //if(_isAlive)
+             //_currentState.HandleStateInLoop();
         }
 
         private void FixedUpdate()
         {
-            _currentState.StatePhysicsUpdate();
+            //if (_isAlive)
+                //_currentState.StatePhysicsUpdate();
         }
 
         public void OnChangeState(BossState state)
@@ -113,10 +134,17 @@ namespace JAM.Boss
             _currentState.EnterState();          
         }
 
+        public void OnCastMagic()
+        {
+            Debug.Log("CAST SPEEL");
+            launcher.LaunchProjectil();
+        }
+
         public void Damage(float damage)
         {
-
+            _health.OnDamage(damage);
         }
+
         public void Damage(Vector2 direction, float damage)
         {
 
@@ -129,9 +157,14 @@ namespace JAM.Boss
             //som de kill
         }
 
+        public void OnDisable()
+        {
+            _health.OnKill -= OnKill;
+        }
+
         private void OnApplicationQuit()
         {     
-             _currentState.ExitState();            
+            // _currentState.ExitState();            
         }
 
         private void OnDrawGizmos()

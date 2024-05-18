@@ -1,4 +1,4 @@
-using JAM.Characters;
+using JAM.Boss;
 using UnityEngine;
 
 namespace JAM.Movement
@@ -21,6 +21,7 @@ namespace JAM.Movement
 
         public float Speed { get { return _currentSpeed; } set { _currentSpeed = value; } }
         public Vector2 Movementinput { get { return _movementInput; } set { _movementInput = value; } }
+        public Vector2 MovementDirection { get { return _movementDirection; } set { _movementDirection = value; } }
 
         private void Awake()
         {

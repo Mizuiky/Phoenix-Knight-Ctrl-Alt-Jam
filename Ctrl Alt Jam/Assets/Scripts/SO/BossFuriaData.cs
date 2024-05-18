@@ -1,6 +1,7 @@
 using UnityEngine;
+using JAM.Characters;
 
-namespace JAM.Characters
+namespace JAM.Boss
 {
     [CreateAssetMenu(menuName = "Data/Boss/Furia")]
     public class BossFuriaData : ScriptableObject
