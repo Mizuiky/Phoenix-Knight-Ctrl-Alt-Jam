@@ -5,7 +5,6 @@ using UnityEngine;
 namespace JAM.Animations
 {
     [AddComponentMenu("JAM/Animator/Animator Controller")]
-    [RequireComponent(typeof(CharacterBase))]
     [DisallowMultipleComponent]
     public class AnimatorController : MonoBehaviour
     {

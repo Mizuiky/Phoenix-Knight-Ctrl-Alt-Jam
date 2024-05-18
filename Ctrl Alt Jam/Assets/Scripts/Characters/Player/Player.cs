@@ -3,14 +3,13 @@ using JAM.Projectils;
 using JAM.Movement;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using JAM.Heal;
+using JAM.Health;
 
 namespace JAM.Characters
 {
     [AddComponentMenu("JAM/Characters/Player")]
     [DisallowMultipleComponent]
     [DefaultExecutionOrder(-1)]
-    [RequireComponent(typeof(PlayerMovementController))]
     public class Player : CharacterBase, IDamageable
     {
        [SerializeField] private PlayerAbilityController _abilityController;
@@ -19,7 +18,7 @@ namespace JAM.Characters
        private PlayerInputActions _playerActions;
        private InputAction _movement;
        public IPlayerMovement playerMovement { private set; get; }
-       private IHealable _healable;
+       private IHealth _healable;
 
        private Vector2 _movementInput;
        private Transform _currentPosition;
@@ -29,7 +28,7 @@ namespace JAM.Characters
            base.Awake();
            _playerActions = new PlayerInputActions();
            _launcher = GetComponentInChildren<ProjectilLauncherBase>();
-           _healable = GetComponent<IHealable>();
+           _healable = GetComponent<IHealth>();
        }
 
        public void OnEnable()
