@@ -167,9 +167,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.3}
+  m_Offset: {x: 0, y: 0.3000002}
   serializedVersion: 2
-  m_Radius: 0.45
+  m_Radius: 0.806581
 --- !u!114 &9052541241104001451
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -211,6 +211,10 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 0130948a-3bc2-4370-8658-dd511e7073e8
     m_ActionName: SkillMap/PlaySkill[/Keyboard/space]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 02f70343-0e0b-4c86-b3c7-85f1c605a408
+    m_ActionName: SkillMap/Interact[/Keyboard/e]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: PlayerMap
@@ -227,10 +231,11 @@ GameObject:
   - component: {fileID: 7156291695521351525}
   - component: {fileID: 7921915846122576004}
   - component: {fileID: 8128457287566164946}
+  - component: {fileID: 4963162866550556281}
   - component: {fileID: 7689027401248922915}
   m_Layer: 6
   m_Name: Abilities
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -281,6 +286,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _state: 0
   _launcher: {fileID: 3276592195203550652}
+--- !u!114 &4963162866550556281
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 917071479992502418}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16bc80f9a8399b3468426bf864a5c8ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _state: 0
+  _dectionRadius: 0.8
+  _detectionLayer:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!114 &7689027401248922915
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -430,7 +452,7 @@ MonoBehaviour:
   - {x: 0.102415085, y: -0.1625787, z: 0}
   m_ShapePathHash: -1667559883
   m_Mesh: {fileID: 0}
-  m_InstanceId: -1322
+  m_InstanceId: -24496
   m_LocalBounds:
     m_Center: {x: -0.008487701, y: -0.124023914, z: 0}
     m_Extent: {x: 0.13201714, y: 0.054662704, z: 0}
@@ -444,9 +466,9 @@ GameObject:
   m_Component:
   - component: {fileID: 5196961091569934489}
   - component: {fileID: 1874315560124232937}
-  m_Layer: 6
+  m_Layer: 9
   m_Name: HitBox
-  m_TagString: Player
+  m_TagString: Hitbox
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
