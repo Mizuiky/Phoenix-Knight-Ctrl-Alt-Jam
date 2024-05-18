@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 707532242989159969}
   - component: {fileID: 617820360853082173}
   - component: {fileID: 9052541241104001451}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -84,7 +84,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterData: {fileID: 11400000, guid: 54e45fd9821c3614c8c29af48dead0d4, type: 2}
   _abilityController: {fileID: 7689027401248922915}
-  _launcher: {fileID: 1025709145268416961}
+  _launcher: {fileID: 3276592195203550652}
 --- !u!114 &8339079895078972804
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -228,7 +228,7 @@ GameObject:
   - component: {fileID: 7921915846122576004}
   - component: {fileID: 8128457287566164946}
   - component: {fileID: 7689027401248922915}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Abilities
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -280,7 +280,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _state: 0
-  _launcher: {fileID: 1025709145268416961}
+  _launcher: {fileID: 3276592195203550652}
 --- !u!114 &7689027401248922915
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -305,7 +305,7 @@ GameObject:
   - component: {fileID: 3737087518036871009}
   - component: {fileID: 3821742310265670105}
   - component: {fileID: 7770517461086148723}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Render
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -444,7 +444,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5196961091569934489}
   - component: {fileID: 1874315560124232937}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: HitBox
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -520,8 +520,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5530824121220883903}
-  - component: {fileID: 1025709145268416961}
-  m_Layer: 0
+  - component: {fileID: 3276592195203550652}
+  m_Layer: 6
   m_Name: ProjectilLauncher
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -544,7 +544,7 @@ Transform:
   - {fileID: 9040635474526413117}
   m_Father: {fileID: 8439675587874994912}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1025709145268416961
+--- !u!114 &3276592195203550652
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -553,11 +553,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 6820618406943452493}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2a3978cecff373444a5abc0860e34937, type: 3}
+  m_Script: {fileID: 11500000, guid: af63bcaf1e9d8e9439d8faad4d35466b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _firePosition: {fileID: 9040635474526413117}
-  _data: {fileID: 11400000, guid: a487064b70957f74d8cc6f868a6a4c35, type: 2}
 --- !u!1 &7870180633067406080
 GameObject:
   m_ObjectHideFlags: 0
@@ -567,7 +566,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6754813609861388151}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Body
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -599,7 +598,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9040635474526413117}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: FirePosition
   m_TagString: Untagged
   m_Icon: {fileID: 0}

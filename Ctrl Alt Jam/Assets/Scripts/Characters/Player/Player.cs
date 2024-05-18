@@ -51,8 +51,7 @@ namespace JAM.Characters
         {
             if(Input.GetKeyDown(KeyCode.H))
             {
-                Debug.Log("cliquei h");
-                Damage(4);
+                _launcher.LaunchProjectil();
             }
         }
 
