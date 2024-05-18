@@ -1,13 +1,14 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using JAM.Dialog;
 
 namespace JAM.UI
 {
     public class UIManager : MonoBehaviour
     {
         [SerializeField] private DialogBox _dialogBox;
-        [SerializeField] private HUD _hud;
+        //[SerializeField] private HUD _hud;
 
         public Action onContinueDialog;
 
@@ -29,7 +30,7 @@ namespace JAM.UI
             _dialogBox.ResetFields();
             _dialogBox.SetBoxVisibility(false);
             _dialogBox.EnableOptionsContainer(false);
-            _hud.Reset();
+            //_hud.Reset();
         }
 
         #region DialogBox

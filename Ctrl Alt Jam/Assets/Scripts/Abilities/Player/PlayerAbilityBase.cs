@@ -2,7 +2,6 @@ using UnityEngine;
 using JAM.Characters;
 using System;
 using UnityEngine.InputSystem;
-using JAM.Projectils;
 
 namespace JAM.Abilites
 {
@@ -17,6 +16,7 @@ namespace JAM.Abilites
     {
         LightUp,
         Fireball,
+        Interact,
         None
     }
 
@@ -45,7 +45,7 @@ namespace JAM.Abilites
             _playerInputActions = actions;
         }
 
-        protected void ChangeAbilityState(InputAction.CallbackContext value)
+        protected virtual void ActivateAbility(InputAction.CallbackContext value)
         {
             if (_state == AbiliteState.Ready)
             {

@@ -3,14 +3,13 @@ using JAM.Projectils;
 using JAM.Movement;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using JAM.Heal;
+using JAM.Health;
 
 namespace JAM.Characters
 {
     [AddComponentMenu("JAM/Characters/Player")]
     [DisallowMultipleComponent]
     [DefaultExecutionOrder(-1)]
-    [RequireComponent(typeof(PlayerMovementController))]
     public class Player : CharacterBase, IDamageable
     {
        [SerializeField] private PlayerAbilityController _abilityController;
@@ -19,7 +18,7 @@ namespace JAM.Characters
        private PlayerInputActions _playerActions;
        private InputAction _movement;
        public IPlayerMovement playerMovement { private set; get; }
-       private IHealable _healable;
+       private IHealth _health;
 
        private Vector2 _movementInput;
        private Transform _currentPosition;
@@ -29,7 +28,7 @@ namespace JAM.Characters
            base.Awake();
            _playerActions = new PlayerInputActions();
            _launcher = GetComponentInChildren<ProjectilLauncherBase>();
-           _healable = GetComponent<IHealable>();
+           _health = GetComponent<IHealth>();
        }
 
        public void OnEnable()
@@ -40,7 +39,7 @@ namespace JAM.Characters
            _movement.performed += SetInput;
            _movement.canceled += ResetInput;
 
-           _healable.OnKill += OnKill;
+           _health.OnKill += OnKill;
        }
 
         public void Start()
@@ -52,8 +51,7 @@ namespace JAM.Characters
         {
             if(Input.GetKeyDown(KeyCode.H))
             {
-                Debug.Log("cliquei h");
-                Damage(4);
+                _launcher.LaunchProjectil();
             }
         }
 
@@ -62,13 +60,13 @@ namespace JAM.Characters
             playerMovement = characterComponents.movement.GetComponent<IPlayerMovement>();
             _abilityController.Init(_playerActions);
             _launcher.Init(this);
-            _healable.Init();
+            _health.Init();
         }
 
         public void Reset()
         {
             _movement.Reset();
-            _healable.Reset();
+            _health.Reset();
             _abilityController.Reset();
 
             SetPosition();
@@ -91,14 +89,14 @@ namespace JAM.Characters
             //feedback de dano
             //som de dano
             Debug.Log("Damage");
-            _healable.OnDamage(damage);
+            _health.OnDamage(damage);
         }
 
         public void Damage(Vector2 direction, float damage)
         {
             //feedback de dano
             //som de dano
-            _healable.OnDamage(damage);
+            _health.OnDamage(damage);
         }
 
         private void SetPosition()

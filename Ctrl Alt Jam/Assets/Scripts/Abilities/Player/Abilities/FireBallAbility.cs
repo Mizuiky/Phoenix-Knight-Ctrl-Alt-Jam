@@ -22,13 +22,13 @@ namespace JAM.Abilites
             _fireballSkill = _playerInputActions.SkillMap.FireBall;
             _fireballSkill.Enable();
 
-            _fireballSkill.performed += ChangeAbilityState;
+            _fireballSkill.performed += ActivateAbility;
         }
 
         public override void Exit()
         {
             _fireballSkill.Disable();
-            _fireballSkill.performed -= ChangeAbilityState;
+            _fireballSkill.performed -= ActivateAbility;
         }
 
         public override void HandleAbility()
