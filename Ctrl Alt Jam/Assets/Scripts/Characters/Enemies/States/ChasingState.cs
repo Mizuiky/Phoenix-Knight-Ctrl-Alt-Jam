@@ -3,24 +3,36 @@ using JAM.Characters;
 
 namespace JAM.Boss
 {
-    public class ChasingState : IState
+    public class ChasingState : IBossState
     {
         private BossState _state = BossState.Chasing;
         public BossState State { get { return _state; } }
 
-        private CharacterBase _target;
         private BossBehavior _boss;
-
-        private Vector3 _currentPosition;
 
         private float _minDistanceToAttack;
 
-        private bool isChasing;
-        private bool _targetIsDamageable = false;
+        private bool _isChasing;
+        private bool _targetIsDamageable = false;  
+        
+        private float _timeToStartChasing;
+        private float _passedStartChasingTime;
+
+        private Vector3 _direction;
+        private Vector3 _currentPosition;
+
+        public ChasingState(BossBehavior boss, BossFuriaData data)
+        {
+            _boss = boss;
+            _minDistanceToAttack = data.minDistanceToAttack;
+            _timeToStartChasing = data.timeToStartChasing;
+        }
 
         public void EnterState()
         {
-            isChasing = true;
+            Debug.Log("Enter chasing state");
+            _isChasing = false;
+            _passedStartChasingTime = 0;
         }
 
         public void HandleState()
@@ -30,24 +42,47 @@ namespace JAM.Boss
 
         public void HandleStateInLoop()
         {
-            if(Vector3.Distance(_boss.transform.position, _target.transform.position) < _minDistanceToAttack && isChasing)
+            if (_isChasing)
             {
-                isChasing = false;
-                _boss.OnChangeState(BossState.Dash);
+                if (Vector3.Distance(_boss.transform.position, _boss.BossTarget.transform.position) < _minDistanceToAttack)
+                {
+                    Debug.Log("stop chasing");
+                    _isChasing = false;
+                    _boss.animator.SetBool("isFlying", false);
+                    _boss.OnChangeState(BossState.Dash);
+                }
             }
-
-            StatePhysicsUpdate();
         }
 
         public void StatePhysicsUpdate()
         {
-            //_boss.characterComponents.movement
+            if (!_isChasing)
+            {
+                if (_passedStartChasingTime < _timeToStartChasing)
+                {
+                    Debug.Log("Waiting to start chasing target");
+                    _passedStartChasingTime += Time.deltaTime;
+                    if (_passedStartChasingTime > _timeToStartChasing)
+                    {
+                        _isChasing = true;
+                        _boss.animator.SetBool("isFlying", true);
+                    }                      
+                }
+            }
+
+            if (_isChasing)
+            {
+                Debug.Log("chasing player");
+                _direction = _boss.BossTarget.transform.position - _boss.transform.position;
+                _direction.Normalize();
+
+                _boss.movement.Movementinput = new Vector2(_direction.x, _direction.y);
+            }            
         }
 
         public void ExitState()
         {
 
         }
-
     }
 }
