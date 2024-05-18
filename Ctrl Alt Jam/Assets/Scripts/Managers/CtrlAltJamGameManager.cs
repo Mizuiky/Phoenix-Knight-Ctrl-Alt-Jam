@@ -1,6 +1,7 @@
 using JAM.Pools;
 using JAM.UI;
 using UnityEngine;
+using JAM.Dialog;
 
 public class CtrlAltJamGameManager : Singleton<CtrlAltJamGameManager>
 {

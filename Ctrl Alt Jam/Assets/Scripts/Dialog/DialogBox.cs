@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using JAM.Dialog;
 
 public class DialogBox : MonoBehaviour
 {
