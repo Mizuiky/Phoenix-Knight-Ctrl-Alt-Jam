@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace JAM.Movement
 {
-    public class PlayerMovementController : MovementBase, IPlayerMovement
+    public class PlayerMovementController : MoveCharacter, IPlayerMovement
     {
         public void SetMovementInput(Vector2 moveInput)
         {

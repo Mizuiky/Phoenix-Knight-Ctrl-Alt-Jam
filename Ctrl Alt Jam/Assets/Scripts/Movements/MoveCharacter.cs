@@ -4,18 +4,18 @@ using UnityEngine;
 
 namespace JAM.Movement
 {
-    public class MovementBase : MonoBehaviour
+    public class MoveCharacter : MonoBehaviour
     {
         protected CharacterBase _character;
         protected Rigidbody2D _rb;
         protected AnimatorController _animatorController;
         
         protected Vector2 _movementInput = Vector3.zero;
-        private Vector2 _movementDirection;
+        protected Vector2 _movementDirection;
         public Vector2 MovementDirection { get { return _movementDirection; } }
-       
-        private float _currentVelocity = 0;
-        private Vector2 _velocity;
+
+        protected float _currentVelocity = 0;
+        protected Vector2 _velocity;
 
         private void Awake()
         {
@@ -25,7 +25,7 @@ namespace JAM.Movement
             _animatorController = _character.characterComponents.animatorController;
         }
 
-        public void Reset()
+        public virtual void Reset()
         {
             _movementInput = Vector2.zero;
             _movementDirection = Vector3.zero;
@@ -77,12 +77,6 @@ namespace JAM.Movement
         protected virtual void Move()
         {
             _rb.velocity = _velocity;
-        }
-
-        protected virtual void MoveToPosition(Vector2 velocity)
-        {        
-            _velocity = velocity;
-            _rb.MovePosition(velocity);
         }
     }
 }
