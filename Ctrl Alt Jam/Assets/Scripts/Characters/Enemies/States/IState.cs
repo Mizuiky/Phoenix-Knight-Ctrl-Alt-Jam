@@ -1,13 +1,11 @@
 
-using JAM.Abilites;
 
-namespace JAM.StateMachine
+namespace JAM.Boss
 {
     public interface IState
     {
-        public AbiliteState State { get; }
+        public BossState State { get; }
 
-        public void ResetState();
         public void EnterState();
         public void HandleStateInLoop();
         public void HandleState();
