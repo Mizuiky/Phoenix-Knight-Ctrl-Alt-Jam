@@ -2,42 +2,45 @@ using UnityEngine;
 using TMPro;
 using System;
 
-public class DialogOption : MonoBehaviour
+namespace JAM.Dialog
 {
-    [SerializeField] private TextMeshProUGUI text;
-
-    public static Action<int> onChooseOption;
-    private int optionIndex;
-    public int OptionIndex { get { return optionIndex; } }
-
-    public void Init()
+    public class DialogOption : MonoBehaviour
     {
-        Reset();
-    }
+        [SerializeField] private TextMeshProUGUI text;
 
-    public void Reset()
-    {
-        SetText("");
-        SetIndex(-1);
-    }
+        public static Action<int> onChooseOption;
+        private int optionIndex;
+        public int OptionIndex { get { return optionIndex; } }
 
-    public void SetText(string optionText)
-    {
-        text.text = optionText;
-    }
+        public void Init()
+        {
+            Reset();
+        }
 
-    public void SetIndex(int index)
-    {
-        optionIndex = index;
-    }
+        public void Reset()
+        {
+            SetText("");
+            SetIndex(-1);
+        }
 
-    public void SendOptionIndex()
-    {
-        onChooseOption?.Invoke(optionIndex);
-    }
+        public void SetText(string optionText)
+        {
+            text.text = optionText;
+        }
 
-    public void EnableOption(bool enable)
-    {
-        this.gameObject.SetActive(enable);
+        public void SetIndex(int index)
+        {
+            optionIndex = index;
+        }
+
+        public void SendOptionIndex()
+        {
+            onChooseOption?.Invoke(optionIndex);
+        }
+
+        public void EnableOption(bool enable)
+        {
+            this.gameObject.SetActive(enable);
+        }
     }
 }

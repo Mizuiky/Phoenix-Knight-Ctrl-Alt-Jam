@@ -63,7 +63,7 @@ namespace JAM.Abilites
         }
 
         private void PlayAbility(InputAction.CallbackContext value)
-        {
+        {           
             foreach (IPlayerAbility ability in _abilities)
             {
                 Debug.Log("state" + ability.State.ToString());
@@ -73,8 +73,8 @@ namespace JAM.Abilites
                     Debug.Log("play ability" + ability.Type.ToString());
                     ability.HandleAbility();
                     return;
-                }                  
-            }
+                }
+            }          
         }
 
         private void Update()

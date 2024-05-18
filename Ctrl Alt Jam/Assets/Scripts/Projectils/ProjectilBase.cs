@@ -8,7 +8,7 @@ namespace JAM.Projectils
         [SerializeField] private ProjectilData _data;
         [SerializeField] private SpriteRenderer _spriteRenterer;
         
-        private Vector3 _direction;
+        protected Vector3 _direction;
         private float _passedTime;
         private float _damagePercent;
 
@@ -69,6 +69,6 @@ namespace JAM.Projectils
         {
             transform.rotation = Quaternion.identity;
             gameObject.SetActive(false);
-        }     
+        }
     }
 }

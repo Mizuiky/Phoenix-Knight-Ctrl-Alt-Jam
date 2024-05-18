@@ -14,7 +14,7 @@ namespace JAM.Characters
         public Animator characterAnimator { private set; get; }
         public AnimatorController animatorController { private set; get; }
         public SpriteRenderer spriteRenderer { private set; get; }
-        public MovementBase movement { private set; get; }
+        public MoveCharacter movement { private set; get; }
 
         #endregion Components Unity
 
@@ -30,7 +30,7 @@ namespace JAM.Characters
             characterAnimator = character.GetComponentInChildren<Animator>();
             animatorController = character.GetComponentInChildren<AnimatorController>();
             spriteRenderer = character.GetComponentInChildren<SpriteRenderer>();
-            movement = character.GetComponent<MovementBase>();
+            movement = character.GetComponent<MoveCharacter>();
         }
     }
 }

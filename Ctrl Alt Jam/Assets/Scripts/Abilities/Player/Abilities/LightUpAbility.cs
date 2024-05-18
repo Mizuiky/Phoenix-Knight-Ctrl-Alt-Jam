@@ -25,13 +25,13 @@ namespace JAM.Abilites
             _lightSkill = _playerInputActions.SkillMap.LightUp;
             _lightSkill.Enable();
 
-            _lightSkill.performed += ChangeAbilityState;
+            _lightSkill.performed += ActivateAbility;
         }
 
         public override void Exit()
         {
             _lightSkill.Disable();
-            _lightSkill.performed -= ChangeAbilityState;
+            _lightSkill.performed -= ActivateAbility;
         }
 
         public override void HandleAbility()
@@ -47,12 +47,6 @@ namespace JAM.Abilites
                     return;
                 }     
             }
-        }
-
-        private void OnDrawGizmos()
-        {
-            Gizmos.color = Color.blue;
-            Gizmos.DrawWireSphere(transform.position, _dectionRadius);
         }
     }
 }

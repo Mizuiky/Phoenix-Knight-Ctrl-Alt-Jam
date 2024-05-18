@@ -16,8 +16,8 @@ MonoBehaviour:
   characterType: 0
   characterAnimationDirection: 1
   currentVelocity: 0
-  originMaxSpeed: 2.5
+  originMaxSpeed: 1
   movementInput: {x: 0, y: 0}
-  maxSpeed: 3
+  maxSpeed: 4
   acceleration: 5
-  deceleration: 10
+  deceleration: 15
