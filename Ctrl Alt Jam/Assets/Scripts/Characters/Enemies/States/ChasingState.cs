@@ -1,5 +1,5 @@
 using UnityEngine;
-using JAM.Characters;
+using static UnityEngine.RuleTile.TilingRuleOutput;
 
 namespace JAM.Boss
 {
@@ -48,8 +48,7 @@ namespace JAM.Boss
                 {
                     Debug.Log("stop chasing");
                     _isChasing = false;
-                    _boss.animator.SetBool("isFlying", false);
-                    _boss.OnChangeState(BossState.Dash);
+                    _boss.OnChangeState(BossState.MagicAttack);
                 }
             }
         }
@@ -77,12 +76,13 @@ namespace JAM.Boss
                 _direction.Normalize();
 
                 _boss.movement.Movementinput = new Vector2(_direction.x, _direction.y);
-            }            
+            }
         }
 
         public void ExitState()
         {
-
+            _boss.movement.Movementinput = Vector2.zero;
+            _boss.movement.MovementDirection = Vector2.zero;
         }
     }
 }

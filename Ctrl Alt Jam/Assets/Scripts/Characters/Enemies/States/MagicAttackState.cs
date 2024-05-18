@@ -1,9 +1,8 @@
 using UnityEngine;
-using JAM.Characters;
 
 namespace JAM.Boss
 {
-    public class MagicAttackState : MonoBehaviour, IBossState
+    public class MagicAttackState : IBossState
     {
         private BossState _state = BossState.MagicAttack;
         public BossState State { get { return _state; } }
@@ -25,11 +24,15 @@ namespace JAM.Boss
         public void EnterState()
         {
             Debug.Log("Enter Magical Attack State");
+            _boss.animator.SetBool("isFlying", false);
+            _boss.animator.SetBool("isDashing", false);
+
+            HandleState();
         }
 
         public void HandleState()
         {
-
+            _boss.OnCastMagic();
         }
 
         public void HandleStateInLoop()

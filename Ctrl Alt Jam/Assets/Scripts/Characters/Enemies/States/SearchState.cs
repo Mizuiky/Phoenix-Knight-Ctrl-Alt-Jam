@@ -1,4 +1,3 @@
-using JAM.Characters;
 using UnityEngine;
 
 namespace JAM.Boss
@@ -46,7 +45,7 @@ namespace JAM.Boss
                 _count = Physics2D.OverlapCircleNonAlloc(_boss.transform.position, _detectionRadius, _colliderDetected, _detectionLayer);
                 if (_count > 0)
                 {
-                    Debug.Log("has Detectecd Target");
+                    Debug.Log("has Detected Target");
                     _hasDetectecTarget = true;
 
                     GameObject target = _colliderDetected[0].gameObject;

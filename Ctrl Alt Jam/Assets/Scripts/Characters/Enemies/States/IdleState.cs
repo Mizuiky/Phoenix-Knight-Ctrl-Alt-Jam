@@ -1,5 +1,4 @@
 using UnityEngine;
-using JAM.Characters;
 
 namespace JAM.Boss
 {

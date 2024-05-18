@@ -1,4 +1,3 @@
-using JAM.Characters;
 using UnityEngine;
 
 namespace JAM.Boss
@@ -21,7 +20,8 @@ namespace JAM.Boss
         public void EnterState()
         {
             Debug.Log("Enter Dash Attack State");
-            _boss.animator.SetTrigger("FuriaAttack");
+            _boss.movement.Movementinput = Vector2.zero;
+            _boss.animator.SetBool("isDashing", true);
         }
 
         public void HandleState()
