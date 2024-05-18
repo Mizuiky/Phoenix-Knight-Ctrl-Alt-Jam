@@ -1,10 +1,19 @@
+using JAM.Characters;
+using UnityEngine;
 
 namespace JAM.Boss
 {
-    public class DeadState : IState
+    public class DeadState : IBossState
     {
         private BossState _state = BossState.Dead;
         public BossState State { get { return _state; } }
+
+        private BossBehavior _boss;
+
+        public DeadState(BossBehavior boss, BossFuriaData data)
+        {
+            _boss = boss;
+        }
 
         public void EnterState()
         {
