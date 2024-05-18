@@ -554,7 +554,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &351971647
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2022,7 +2022,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &943559354
 Transform:
   m_ObjectHideFlags: 0
@@ -5838,7 +5838,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 497067074899792179, guid: 421aa3ab762a23b45a920d00647b8df6, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1256202027088670181, guid: 421aa3ab762a23b45a920d00647b8df6, type: 3}
       propertyPath: _sliderUpdater
