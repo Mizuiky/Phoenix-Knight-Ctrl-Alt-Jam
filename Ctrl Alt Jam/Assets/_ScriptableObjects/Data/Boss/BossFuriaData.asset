@@ -21,12 +21,12 @@ MonoBehaviour:
   deceleration: 10
   bossDamage: 10
   timeToNextState: 5
-  detectionRadius: 5
+  detectionRadius: 4
   detectionLayer:
     serializedVersion: 2
     m_Bits: 64
   minDistanceToAttack: 2.5
-  timeToStartChasing: 6
+  timeToStartChasing: 3
   maxAcceleration: 2
   maxProjecteis: 6
   projectilSpeed: 3
