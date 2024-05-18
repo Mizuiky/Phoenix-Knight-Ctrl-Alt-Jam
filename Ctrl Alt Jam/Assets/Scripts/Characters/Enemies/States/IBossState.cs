@@ -2,7 +2,7 @@
 
 namespace JAM.Boss
 {
-    public interface IState
+    public interface IBossState
     {
         public BossState State { get; }
 
