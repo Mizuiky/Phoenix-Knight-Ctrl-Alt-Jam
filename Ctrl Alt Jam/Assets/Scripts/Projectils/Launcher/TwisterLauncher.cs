@@ -31,9 +31,9 @@ namespace JAM.Projectils
                 if (projectil == null) return;
 
                 float angle = (i % 2 == 0 ? _shootAngle : -_shootAngle) * mult;
-                Debug.Log("angle");
+                Debug.Log("angle" + angle);
 
-                Quaternion quaternion = Quaternion.Euler(angle, 0, angle);
+                Quaternion quaternion = Quaternion.Euler(0, 0, angle);
 
                 projectil.InitializeProjectil(_firePosition.position, _direction, quaternion);
             }           

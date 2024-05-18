@@ -3,7 +3,6 @@ using JAM.Movement;
 using JAM.Projectils;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.WSA;
 
 namespace JAM.Boss
 {
@@ -68,9 +67,9 @@ namespace JAM.Boss
             _stateMachine = new Dictionary<BossState, IBossState>(); 
             
             launcher.Init();
-            //movement.Init(_data);
+            movement.Init(_data);
 
-            //RegisterStates();
+            RegisterStates();
 
             _isAlive = true;
         }
@@ -112,14 +111,14 @@ namespace JAM.Boss
                 OnCastMagic();
             }
 
-            //if(_isAlive)
-             //_currentState.HandleStateInLoop();
+            if(_isAlive)
+             _currentState.HandleStateInLoop();
         }
 
         private void FixedUpdate()
         {
-            //if (_isAlive)
-                //_currentState.StatePhysicsUpdate();
+            if (_isAlive)
+                _currentState.StatePhysicsUpdate();
         }
 
         public void OnChangeState(BossState state)
@@ -164,7 +163,7 @@ namespace JAM.Boss
 
         private void OnApplicationQuit()
         {     
-            // _currentState.ExitState();            
+            _currentState.ExitState();            
         }
 
         private void OnDrawGizmos()
