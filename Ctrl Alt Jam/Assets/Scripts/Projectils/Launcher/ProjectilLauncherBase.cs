@@ -1,34 +1,38 @@
 using UnityEngine;
 using JAM.Characters;
-using System.Collections;
 
 namespace JAM.Projectils
 {
     public class ProjectilLauncherBase : MonoBehaviour
     {
-        [SerializeField] private Transform _firePosition;
-        [SerializeField] private LauncherData _data;
+        [SerializeField] protected Transform _firePosition;
 
-        private CharacterBase _character;
-        private GameObject _obj;
+        protected GameObject _obj;
 
-        private Vector3 _direction;
+        protected Vector3 _direction;
+        protected IProjectil projectil;
 
-        public virtual void Init(CharacterBase character)
+        public virtual void Init() 
         {
-            _character = character;
             _direction = Vector3.zero;
         }
+        public virtual void Init(CharacterBase character) {}
 
-        public virtual void LaunchProjectil()
+        public virtual void LaunchProjectil(){}
+
+        public virtual void LaunchProjectil(Vector3 direction)
         {
-            _direction = _character.characterComponents.movement.MovementDirection;
+            _direction = direction;
+        }
+
+        protected IProjectil GetProjectil()
+        {
             _obj = CtrlAltJamGameManager.Instance.ProjectilPool.GetObject();
 
             IProjectil projectil = _obj.GetComponent<IProjectil>();
-            if (projectil == null) return;
+            if (projectil == null) return null;
 
-            projectil.InitializeProjectil(_firePosition.position, _direction, _character.transform.rotation);
+            return projectil;
         }
     }
 }
