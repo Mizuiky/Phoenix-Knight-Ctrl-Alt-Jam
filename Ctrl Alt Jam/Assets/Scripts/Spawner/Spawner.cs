@@ -45,7 +45,7 @@ namespace JAM.Spawner
             if (torchFirstRoom)
             {
                 // Definindo os limites de onde serão spawnados
-                float minX = -5f; float maxX = -2f; float minY = 1f; float maxY = 3f;
+                float minX = -10; float maxX = 2f; float minY = -3f; float maxY = 8f;
                 int quantidadeEnemys = 5;
 
                 // Gerar um array de posições usando os limites especificados e exibir no console

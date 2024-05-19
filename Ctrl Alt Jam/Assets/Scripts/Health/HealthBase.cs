@@ -15,7 +15,9 @@ namespace JAM.Health
         public virtual void Init()
         {         
             _currentlife = _maxLife;
-            _sliderUpdater.Init(_maxLife);
+            if(_sliderUpdater != null) 
+                _sliderUpdater.Init(_maxLife);
+           
         }
 
         public virtual void Reset()
@@ -46,7 +48,10 @@ namespace JAM.Health
         private void UpdateUI()
         {
             if(_currentlife >= 0)
-                _sliderUpdater.UpdateSlider(_currentlife);
+            {
+                if (_sliderUpdater != null)
+                    _sliderUpdater.UpdateSlider(_currentlife);
+            }
         }
     }
 }

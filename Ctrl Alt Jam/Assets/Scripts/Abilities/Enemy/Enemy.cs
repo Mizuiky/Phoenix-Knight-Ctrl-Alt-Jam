@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
+using JAM.Health;
 
 namespace Assets.Scripts.Abilities.Enemy
 {
-    public class Enemy : MonoBehaviour
+    public class Enemy : MonoBehaviour, IDamageable
     {
 
         private GameObject player;
@@ -15,20 +16,37 @@ namespace Assets.Scripts.Abilities.Enemy
         private Transform target;
         private float speedMovement = 2;
         private SpriteRenderer sr;
-        private float distanciaMin = 0.9f;
+        private float distanciaMin = 0.5f;
+        private IHealth _health;
+
 
         [SerializeField]
         private float visionRadius = 3f;
 
+        [SerializeField]
+        private LayerMask LayerVisionRadius;
 
-        void Start()
+
+        void Awake()
         {
+            _health = GetComponent<IHealth>();
             rb = this.GetComponent<Rigidbody2D>();
             sr = this.GetComponentInChildren<SpriteRenderer>();
             player = GameObject.Find("Player");
-            target = player.transform;
 
+            target = player.transform;
         }
+
+        public void OnEnable()
+        {
+            _health.OnKill += OnKill;
+        }
+            void Start()
+        {
+            _health.Init();
+        }
+
+      
 
         // Update is called once per frame
         void Update()
@@ -41,22 +59,21 @@ namespace Assets.Scripts.Abilities.Enemy
             else
             {
                 StopMove();
+
             }
         }
 
         private void OnDrawGizmos()
         {
-            Gizmos.DrawSphere(this.transform.position, visionRadius);
+            Gizmos.DrawWireSphere(this.transform.position, visionRadius);
         }
 
         private void SearchPlayer()
         {
-            Collider2D collider = Physics2D.OverlapCircle(this.transform.position, visionRadius);
+            Collider2D collider = Physics2D.OverlapCircle(this.transform.position, visionRadius, this.LayerVisionRadius);
             // Ao invés de comparar com a tag Player podemos usar o Layer
-            bool achouPlayer = collider != null && collider.CompareTag("Player");
-            
+            bool achouPlayer = collider != null;
             this.target = achouPlayer ? collider.transform : null;
-
         }
 
         private void Move()
@@ -81,6 +98,39 @@ namespace Assets.Scripts.Abilities.Enemy
         private void StopMove()
         {
             this.rb.velocity = Vector2.zero;
+        }
+
+
+        public void Damage(float damage)
+        {
+            _health.OnDamage(damage);
+        }
+
+        public void Damage(Vector2 direction, float damage)
+        {
+
+        }
+
+        private void OnCollisionEnter2D(Collision2D collision)
+        {
+            Debug.Log(collision);
+
+            IDamageable damageable = player.GetComponent<IDamageable>();
+            if (damageable != null)
+            {
+                damageable.Damage(4);
+            }
+
+        }
+
+        private void OnKill()
+        {
+            Destroy(gameObject);
+        }
+
+        public void OnDisable()
+        {
+            _health.OnKill -= OnKill;
         }
     }
 }
