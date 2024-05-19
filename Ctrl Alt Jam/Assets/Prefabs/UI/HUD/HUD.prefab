@@ -132,6 +132,14 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 0.9245283
       objectReference: {fileID: 0}
+    - target: {fileID: 687213752031126728, guid: d0baaef2f60f78045b6dfb3372181ca0, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 62.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3713896528548079982, guid: d0baaef2f60f78045b6dfb3372181ca0, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 20.3
+      objectReference: {fileID: 0}
     - target: {fileID: 3771563998838597961, guid: d0baaef2f60f78045b6dfb3372181ca0, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -254,7 +262,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6471375599040440988, guid: d0baaef2f60f78045b6dfb3372181ca0, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 37
+      value: 26.1
       objectReference: {fileID: 0}
     - target: {fileID: 8011567552150085983, guid: d0baaef2f60f78045b6dfb3372181ca0, type: 3}
       propertyPath: m_Name

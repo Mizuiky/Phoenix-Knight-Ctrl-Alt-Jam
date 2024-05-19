@@ -46,7 +46,7 @@ public class LocalizationManager : MonoBehaviour
         }
 
         //test
-        GetTranslation("waiter_verySatisfiedThanks");
+        GetTranslation("before_boss6");
     }
 
     public string GetTranslation(string key)
