@@ -40,6 +40,6 @@ public class CtrlAltJamGameManager : Singleton<CtrlAltJamGameManager>
         _dialogManager?.Init();
 
         _projectilPool.Init();
-        _bossProjectilPool.Init();
+        //_bossProjectilPool.Init();
     }
 }
