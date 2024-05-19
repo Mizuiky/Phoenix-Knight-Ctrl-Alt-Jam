@@ -4070,7 +4070,7 @@ MonoBehaviour:
   _dialogManager: {fileID: 2088928024}
   _localizationManager: {fileID: 1817985393}
   _uiManager: {fileID: 1831061186}
-  _dialogFile: {fileID: 4900000, guid: c2fc00c3df94a9b4d89fb4e313187fa9, type: 3}
+  _dialogFile: {fileID: 4900000, guid: 3515859c7764db84f86311bef2bd7f25, type: 3}
   _projectilPool: {fileID: 648978884}
   _bossProjectilPool: {fileID: 0}
 --- !u!4 &1849736893
