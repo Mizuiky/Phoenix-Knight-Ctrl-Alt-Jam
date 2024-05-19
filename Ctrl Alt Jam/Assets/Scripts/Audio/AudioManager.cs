@@ -37,9 +37,13 @@ namespace JAM.Audio
             _musicConfigs = _musicData.audioConfigList;
 
             _sfxConfigs = new List<AudioConfig>();
-            _sfxConfigs = _sfxData.audioConfigList;
+            _sfxConfigs = _sfxData.audioConfigList;        
+        }
 
-            Reset();
+        public void Reset()
+        {
+            _musicSource.Stop();
+            _sfxSource.Stop();       
         }
 
         public void Update()
@@ -48,12 +52,6 @@ namespace JAM.Audio
             {
                 PlaySound(musicName, musicType);
             }
-        }
-
-        public void Reset()
-        {
-            _musicSource.Stop();
-            _sfxSource.Stop();
         }
 
         public void PlaySound(string name, SoundType type)

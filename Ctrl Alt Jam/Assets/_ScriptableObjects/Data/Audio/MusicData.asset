@@ -15,56 +15,56 @@ MonoBehaviour:
   audioConfigList:
   - clip: {fileID: 8300000, guid: 04bef9ded5614704eaec87a4803f514a, type: 3}
     name: MainTheme
-    volume: 0
-    pitch: 0
+    volume: 3
+    pitch: 1
     isLoopSound: 1
     has3DSound: 0
     minDistance: 0
     maxDistance: 0
   - clip: {fileID: 8300000, guid: b2c45c8f8a3112e48bb4159d64f44daf, type: 3}
     name: AgathaDream
-    volume: 0
-    pitch: 0
+    volume: 1
+    pitch: 1
     isLoopSound: 1
     has3DSound: 0
     minDistance: 0
     maxDistance: 0
   - clip: {fileID: 8300000, guid: e082c43acd5097f44acde9a532456f7d, type: 3}
     name: AgathaVillage
-    volume: 0
-    pitch: 0
+    volume: 1
+    pitch: 1
     isLoopSound: 1
     has3DSound: 0
     minDistance: 0
     maxDistance: 0
   - clip: {fileID: 8300000, guid: 770daad799e3cd54581d1d5d25f764c9, type: 3}
     name: Dungeon Theme
-    volume: 0
-    pitch: 0
+    volume: 1
+    pitch: 1
     isLoopSound: 1
     has3DSound: 0
     minDistance: 0
     maxDistance: 0
   - clip: {fileID: 8300000, guid: c6eec839ffcfc9848bcae378eccb8807, type: 3}
     name: Helix Fountain
-    volume: 0
-    pitch: 0
+    volume: 1
+    pitch: 1
     isLoopSound: 1
     has3DSound: 0
     minDistance: 0
     maxDistance: 0
   - clip: {fileID: 8300000, guid: 91629bb271fca3544a2e722eac8e7174, type: 3}
     name: Furia Message
-    volume: 0
-    pitch: 0
+    volume: 1
+    pitch: 1
     isLoopSound: 1
     has3DSound: 0
     minDistance: 0
     maxDistance: 0
   - clip: {fileID: 8300000, guid: 40e17ef2fd9656b4f9ceeacac1481baa, type: 3}
     name: Furia Theme
-    volume: 0
-    pitch: 0
+    volume: 1
+    pitch: 1
     isLoopSound: 1
     has3DSound: 0
     minDistance: 0

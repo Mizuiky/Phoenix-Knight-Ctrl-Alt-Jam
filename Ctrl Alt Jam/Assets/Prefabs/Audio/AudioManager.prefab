@@ -50,7 +50,7 @@ AudioSource:
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 100
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
@@ -174,12 +174,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2260a20656b9e2349a1038b44388d803, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  musicName: MainTheme
+  musicType: 0
   _musicSource: {fileID: 8799434444009865654}
   _sfxSource: {fileID: 5050583898963674557}
+  _musicData: {fileID: 11400000, guid: a54af7bb483450e439a056f946a1f927, type: 2}
+  _sfxData: {fileID: 11400000, guid: 18776f17b40a0cf47b3bcc2296ec5625, type: 2}
   _musicConfigs:
   - clip: {fileID: 8300000, guid: 04bef9ded5614704eaec87a4803f514a, type: 3}
     name: MainTheme
-    volume: 0
+    volume: 3
     pitch: 0
     isLoopSound: 1
     has3DSound: 0
@@ -333,14 +337,14 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 100
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
