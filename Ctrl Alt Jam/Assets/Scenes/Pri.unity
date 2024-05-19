@@ -4993,6 +4993,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2646087095627061283, guid: 0a71051d69775e64588ad39c36a83625, type: 3}
+      propertyPath: _sfxData
+      value: 
+      objectReference: {fileID: 11400000, guid: 18776f17b40a0cf47b3bcc2296ec5625, type: 2}
+    - target: {fileID: 2646087095627061283, guid: 0a71051d69775e64588ad39c36a83625, type: 3}
+      propertyPath: musicName
+      value: MainTheme
+      objectReference: {fileID: 0}
+    - target: {fileID: 2646087095627061283, guid: 0a71051d69775e64588ad39c36a83625, type: 3}
+      propertyPath: _musicData
+      value: 
+      objectReference: {fileID: 11400000, guid: a54af7bb483450e439a056f946a1f927, type: 2}
+    - target: {fileID: 2646087095627061283, guid: 0a71051d69775e64588ad39c36a83625, type: 3}
+      propertyPath: _musicConfigs.Array.data[0].volume
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 4546141458375922036, guid: 0a71051d69775e64588ad39c36a83625, type: 3}
       propertyPath: m_Name
       value: AudioManager

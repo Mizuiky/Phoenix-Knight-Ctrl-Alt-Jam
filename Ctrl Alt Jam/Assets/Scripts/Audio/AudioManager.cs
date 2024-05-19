@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace JAM.Sound
+namespace JAM.Audio
 {
     public enum SoundType
     {
@@ -17,6 +17,9 @@ namespace JAM.Sound
         [SerializeField] private AudioSource _musicSource;
         [SerializeField] private AudioSource _sfxSource;
 
+        [SerializeField] private AudioData _musicData;
+        [SerializeField] private AudioData _sfxData;
+
         [SerializeField] private List<AudioConfig> _musicConfigs;
         [SerializeField] private List<AudioConfig> _sfxConfigs;
 
@@ -30,6 +33,12 @@ namespace JAM.Sound
 
         public void Init()
         {
+            _musicConfigs = new List<AudioConfig>();
+            _musicConfigs = _musicData.audioConfigList;
+
+            _sfxConfigs = new List<AudioConfig>();
+            _sfxConfigs = _sfxData.audioConfigList;
+
             Reset();
         }
 
