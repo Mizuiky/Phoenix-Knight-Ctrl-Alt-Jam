@@ -1,11 +1,13 @@
 using JAM.Dialog;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using JAM.Interactables;
 
 namespace JAM.Abilites
-{
-    public class InteractDialogAbility : PlayerAbilityBase<InteractDialogAbility>
+{ 
+    public class InteractableObjectsAbility : PlayerAbilityBase<InteractDialogAbility>
     {
+
         [SerializeField] private float _dectionRadius;
         [SerializeField] private LayerMask _detectionLayer;
 
@@ -37,18 +39,18 @@ namespace JAM.Abilites
             {
                 Debug.Log("Try to interact");
 
-                IDialogTrigger dialog = _results[0].gameObject.GetComponent<IDialogTrigger>();
-                if (dialog != null)
+                IInteractable interactable = _results[0].gameObject.GetComponent<IInteractable>();
+                if (interactable != null)
                 {
                     Debug.Log("OnStartDialog");
-                    dialog.OnStartDialog();
-                }               
+                    interactable.Interact();
+                }
             }
         }
 
         private void OnDrawGizmos()
         {
-            Gizmos.color = Color.cyan;
+            Gizmos.color = Color.green;
             Gizmos.DrawWireSphere(transform.position, _dectionRadius);
         }
     }
