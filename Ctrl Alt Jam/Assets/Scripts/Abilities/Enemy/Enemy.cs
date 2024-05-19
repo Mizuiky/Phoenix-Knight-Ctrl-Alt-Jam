@@ -19,6 +19,8 @@ namespace Assets.Scripts.Abilities.Enemy
         private float distanciaMin = 0.5f;
         private IHealth _health;
 
+        [SerializeField]
+        public Animator animator;
 
         [SerializeField]
         private float visionRadius = 3f;
@@ -32,6 +34,7 @@ namespace Assets.Scripts.Abilities.Enemy
             _health = GetComponent<IHealth>();
             rb = this.GetComponent<Rigidbody2D>();
             sr = this.GetComponentInChildren<SpriteRenderer>();
+            animator = this.GetComponentInChildren<Animator>();
             player = GameObject.Find("Player");
 
             target = player.transform;
@@ -103,6 +106,8 @@ namespace Assets.Scripts.Abilities.Enemy
 
         public void Damage(float damage)
         {
+            //animator
+            animator.SetBool("isInAttack", true);
             _health.OnDamage(damage);
         }
 
@@ -118,7 +123,7 @@ namespace Assets.Scripts.Abilities.Enemy
             IDamageable damageable = player.GetComponent<IDamageable>();
             if (damageable != null)
             {
-                damageable.Damage(4);
+                damageable.Damage(3);
             }
 
         }

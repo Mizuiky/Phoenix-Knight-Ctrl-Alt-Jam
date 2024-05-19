@@ -88,6 +88,7 @@ namespace JAM.Characters
         {
             //feedback de dano
             //som de dano
+            // @todo talvez adicionar um cooldown de vulnerabilidade e se afastar do inimigo 
             Debug.Log("Damage");
             _health.OnDamage(damage);
         }
@@ -110,6 +111,7 @@ namespace JAM.Characters
             //som de player morrendo
             //animacao player morrendo
             //animacao player voltando das cinzas depois de um tempo com a musica da nati
+            Debug.Break();
         }
 
         public void OnDisable()

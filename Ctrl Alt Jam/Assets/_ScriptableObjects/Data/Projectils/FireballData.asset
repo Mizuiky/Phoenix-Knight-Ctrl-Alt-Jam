@@ -15,6 +15,7 @@ MonoBehaviour:
   sprite: {fileID: 21300000, guid: a926d50386a154cafb5a50eaffabeb61, type: 3}
   projectilParticle: {fileID: 0}
   damage: 2
+  damagePercent: 1
   tagToDamage: Enemy
   lifeTime: 5
   speed: 5
