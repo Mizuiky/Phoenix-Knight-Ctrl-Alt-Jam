@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace JAM.Scene
 {
@@ -6,7 +7,7 @@ namespace JAM.Scene
     {
         public void StartGame()
         {
-
+            SceneManager.LoadScene("agathaDream");
         }
 
         public void QuitGame()
