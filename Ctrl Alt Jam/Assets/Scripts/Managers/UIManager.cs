@@ -14,6 +14,8 @@ namespace JAM.UI
 
         public void Init()
         {
+            DontDestroyOnLoad(this);
+
             CtrlAltJamGameManager.Instance.DialogController.onStartDialog += OpenDialogBox;
             CtrlAltJamGameManager.Instance.DialogController.onEndDialog += CloseDialogBox;
             CtrlAltJamGameManager.Instance.DialogController.onUpdateOptions += SetDialogOptions;

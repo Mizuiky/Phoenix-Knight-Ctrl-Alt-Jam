@@ -9,7 +9,7 @@ namespace JAM.Audio
         SFX
     }
 
-    public class AudioManager : MonoBehaviour
+    public class AudioManager
     {
         [SerializeField] private string musicName;
         [SerializeField] private SoundType musicType;
@@ -44,16 +44,6 @@ namespace JAM.Audio
         {
             _musicSource.Stop();
             _sfxSource.Stop();       
-        }
-
-        public void Update()
-        {
-#if UNITY_EDITOR
-            if (Input.GetKeyDown(KeyCode.P))
-            {
-                PlaySound(musicName, musicType);
-            }
-#endif
         }
 
         public void PlaySound(string name, SoundType type)

@@ -7,17 +7,16 @@ public enum Language
     EN
 }
 
-public class LocalizationManager : MonoBehaviour
+public class LocalizationManager
 {
     private Dictionary<string, string> PT_BR;
     private Dictionary<string, string> EN;
     private Dictionary<string, string>[] languages;
 
-    public TextAsset[] files;
     private Language gameLanguage;
     private int languageIndex;
 
-    public void Init()
+    public void Init(TextAsset [] files)
     {
         PT_BR = new Dictionary<string, string>();
         EN = new Dictionary<string, string>();

@@ -25,7 +25,7 @@ namespace JAM.Projectils
                 if (mult % 2 == 0)
                     mult++;
 
-                _obj = CtrlAltJamGameManager.Instance.BossProjectilPool.GetObject();
+                //_obj = CtrlAltJamGameManager.Instance.BossProjectilPool.GetObject();
 
                 IProjectil projectil = _obj.GetComponent<IProjectil>();
                 if (projectil == null) return;
@@ -36,7 +36,7 @@ namespace JAM.Projectils
                 Quaternion quaternion = Quaternion.Euler(0, 0, angle);
 
                 projectil.InitializeProjectil(_firePosition.position, _direction, quaternion);
-            }           
+            }
         }
     }
 }
