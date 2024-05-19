@@ -40,7 +40,7 @@ namespace JAM.Abilites
                 IDialogTrigger dialog = _results[0].gameObject.GetComponent<IDialogTrigger>();
                 if (dialog != null)
                 {
-                    Debug.Log("Try to interact");
+                    Debug.Log("OnStartDialog");
                     dialog.OnStartDialog();
                 }               
             }

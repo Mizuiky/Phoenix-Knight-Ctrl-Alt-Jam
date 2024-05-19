@@ -1,32 +1,34 @@
 using UnityEngine;
 
-public class InteractableBase : MonoBehaviour, IInteractable
+namespace JAM.Interactables
 {
-    [SerializeField] private string _songName;
-
-    public void Start()
+    public class InteractableBase : MonoBehaviour, IInteractable
     {
-        Init();
-    }
+        [SerializeField] private string _songName;
 
-    public virtual void Init()
-    {
+        public void Start()
+        {
+            Init();
+        }
 
-    }
+        public virtual void Init()
+        {
 
-    public virtual void Reset()
-    {
-        
-    }
+        }
 
-    public virtual void Interact()
-    {
-        
-    }
+        public virtual void Reset()
+        {
 
-    public virtual void EndInteraction()
-    {
-        //play song with music manager
+        }
+
+        public virtual void Interact()
+        {
+
+        }
+
+        public virtual void EndInteraction()
+        {
+            //play song with music manager
+        }
     }
 }
- 

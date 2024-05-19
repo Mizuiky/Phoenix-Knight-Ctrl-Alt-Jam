@@ -1,8 +1,11 @@
 
-public interface IInteractable
+namespace JAM.Interactables
 {
-    public void Init();
-    public void Reset();
-    public void Interact();
-    public void EndInteraction();
+    public interface IInteractable
+    {
+        public void Init();
+        public void Reset();
+        public void Interact();
+        public void EndInteraction();
+    }
 }

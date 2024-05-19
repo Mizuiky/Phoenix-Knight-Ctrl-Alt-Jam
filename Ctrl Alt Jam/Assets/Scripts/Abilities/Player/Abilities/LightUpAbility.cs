@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using JAM.Interactables;
 
 namespace JAM.Abilites
 {
