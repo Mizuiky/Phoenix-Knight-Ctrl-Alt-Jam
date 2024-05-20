@@ -45,8 +45,8 @@ namespace JAM.Spawner
             if (torchFirstRoom)
             {
                 // Definindo os limites de onde serão spawnados
-                float minX = -10; float maxX = 2f; float minY = -3f; float maxY = 8f;
-                int quantidadeEnemys = 5;
+                float minX = -6; float maxX = 6f; float minY = 1; float maxY = 7f;
+                int quantidadeEnemys = 4;
 
                 // Gerar um array de posições usando os limites especificados e exibir no console
                 Vector3[] posicoesGeradas = GerarPosicoes(minX, maxX, minY, maxY, quantidadeEnemys);
@@ -62,7 +62,7 @@ namespace JAM.Spawner
         private Vector3[] GerarPosicoes(float minX, float maxX, float minY, float maxY, int quantidade)
         {
             Vector3[] posicoes = new Vector3[quantidade];
-            float distanciaMinima = 0.4f;
+            float distanciaMinima = 1f;
 
             for (int i = 0; i < quantidade; i++)
             {

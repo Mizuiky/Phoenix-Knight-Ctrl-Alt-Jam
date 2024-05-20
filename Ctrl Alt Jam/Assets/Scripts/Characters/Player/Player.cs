@@ -111,7 +111,6 @@ namespace JAM.Characters
             //som de player morrendo
             //animacao player morrendo
             //animacao player voltando das cinzas depois de um tempo com a musica da nati
-            Debug.Break();
         }
 
         public void OnDisable()
