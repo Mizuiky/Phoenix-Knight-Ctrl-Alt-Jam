@@ -4,6 +4,8 @@ using JAM.Movement;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using JAM.Health;
+using UnityEngine.SceneManagement;
+using System.Security.Authentication.ExtendedProtection;
 
 namespace JAM.Characters
 {
@@ -45,6 +47,13 @@ namespace JAM.Characters
         public void Start()
         {
             Init();
+            DontDestroyOnLoad(this);
+            SceneManager.sceneLoaded += OnSceneLoaded;
+        }
+
+        public void OnSceneLoaded(UnityEngine.SceneManagement.Scene scene, LoadSceneMode loadSceneMode)
+        {
+            Debug.Log("cena" + scene.name + "foi carregada");
         }
 
         public void Update()

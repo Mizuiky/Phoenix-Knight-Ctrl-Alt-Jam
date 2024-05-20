@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace JAM.Dialog
 {
@@ -8,6 +9,8 @@ namespace JAM.Dialog
 
         private bool hasDialogFinished = true;
         public bool HasDialogFinished {  get { return hasDialogFinished; } }
+
+        public UnityEvent onDialogFinished;
 
         public void Start()
         {
@@ -33,6 +36,9 @@ namespace JAM.Dialog
 
         public void OnEndDialog()
         {
+            if (onDialogFinished != null)
+                onDialogFinished?.Invoke();
+
             hasDialogFinished = true;
         }
     }

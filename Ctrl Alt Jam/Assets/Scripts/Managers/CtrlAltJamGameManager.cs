@@ -1,19 +1,23 @@
-using JAM.Pools;
 using JAM.UI;
 using UnityEngine;
 using JAM.Dialog;
 using JAM.Audio;
+using UnityEngine.SceneManagement;
 
 public class CtrlAltJamGameManager : Singleton<CtrlAltJamGameManager>
 {
+    public enum SceneType
+    {
+        AgathaDream,
+        AgathaHome,
+        DungeonFuria,
+        BossFuria
+    }
+
     [SerializeField] private DialogManager _dialogManager;
     [SerializeField] private UIManager _uiManager;
     [SerializeField] private TextAsset[] _localizationFiles;
     [SerializeField] private TextAsset _dialogFile;
-
-    [SerializeField] private PoolBase _projectilPool;
-    [SerializeField] private PoolBase _mobPool;
-    [SerializeField] private PoolBase _bossProjectilPool;
 
     private InitializeDialogs _initializeDialogs;
     private LocalizationManager _localizationManager;
@@ -28,6 +32,7 @@ public class CtrlAltJamGameManager : Singleton<CtrlAltJamGameManager>
     public void Start()
     {
         Init();
+        SceneManager.sceneLoaded += OnLoadScene;
     }
 
     private void Init()
@@ -35,14 +40,16 @@ public class CtrlAltJamGameManager : Singleton<CtrlAltJamGameManager>
         _initializeDialogs = new InitializeDialogs();
         _initializeDialogs.Load(_dialogFile);
 
+        _localizationManager = new LocalizationManager();
         _localizationManager?.Init(_localizationFiles);
         _uiManager?.Init();
         _dialogManager?.Init();     
     }
 
-    public void InitPools()
+    public void OnLoadScene(UnityEngine.SceneManagement.Scene scene, LoadSceneMode loadSceneMode)
     {
-        _projectilPool.Init();
-        _bossProjectilPool.Init();
+        Debug.Log("loaded");
+        string name = scene.name.ToString();
+        AudioManager.PlaySound(name, SoundType.Music);     
     }
 }
