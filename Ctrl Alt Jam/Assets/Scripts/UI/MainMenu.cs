@@ -7,7 +7,7 @@ namespace JAM.Scene
     {
         public void StartGame()
         {
-            SceneManager.LoadScene("agathaDream");
+            SceneManager.LoadScene("afterMenu");
         }
 
         public void QuitGame()

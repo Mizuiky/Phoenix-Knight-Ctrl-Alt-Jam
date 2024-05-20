@@ -35,7 +35,12 @@ namespace JAM.Dialog
 
         public void Awake()
         {
-            DontDestroyOnLoad(this);
+           
+        }
+
+        public void Start()
+        {
+            
         }
 
         public void Init()
@@ -45,11 +50,11 @@ namespace JAM.Dialog
             _dialogReference = CtrlAltJamGameManager.Instance.InitializeDialogs;
 
             _currentOptions = new List<Option>()
-        {
-            new Option(),
-            new Option(),
-            new Option()
-        };
+            {
+                new Option(),
+                new Option(),
+                new Option()
+            };
 
             Reset();
         }

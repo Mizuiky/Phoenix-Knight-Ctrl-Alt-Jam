@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace JAM.Scene
+namespace JAM.SceneControl
 {
     public class SceneController : MonoBehaviour
     {

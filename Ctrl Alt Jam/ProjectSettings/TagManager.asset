@@ -8,6 +8,8 @@ TagManager:
   - Interactable
   - Hitbox
   - Item
+  - PlayerPoint
+  - DialogManager
   layers:
   - Default
   - TransparentFX
