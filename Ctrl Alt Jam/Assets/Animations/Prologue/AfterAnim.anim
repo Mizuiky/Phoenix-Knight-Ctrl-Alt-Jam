@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: InitAnim
+  m_Name: AfterAnim
   serializedVersion: 7
   m_Legacy: 0
   m_Compressed: 0
@@ -683,7 +683,7 @@ AnimationClip:
   m_Events:
   - time: 19
     functionName: LoadScene
-    data: MainMenu
+    data: agathaDream
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
