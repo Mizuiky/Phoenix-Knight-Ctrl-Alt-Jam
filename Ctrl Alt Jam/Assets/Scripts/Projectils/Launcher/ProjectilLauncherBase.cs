@@ -27,7 +27,7 @@ namespace JAM.Projectils
 
         protected IProjectil GetProjectil()
         {
-            _obj = CtrlAltJamGameManager.Instance.ProjectilPool.GetObject();
+            //_obj = CtrlAltJamGameManager.Instance.ProjectilPool.GetObject();
 
             IProjectil projectil = _obj.GetComponent<IProjectil>();
             if (projectil == null) return null;

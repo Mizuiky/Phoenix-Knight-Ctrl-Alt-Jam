@@ -6,7 +6,19 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Pri.unity
+    path: Assets/Scenes/Game/PreMainMenu.unity
+    guid: eaf86a53ce270ff439d91a67a895a505
+  - enabled: 1
+    path: Assets/Scenes/Game/MainMenu.unity
+    guid: 072922e99768b7341bafe99d9266c9e4
+  - enabled: 1
+    path: Assets/Scenes/Game/AgathaDream.unity
+    guid: ffc0060b2c286d24fa7fc7a8436c0827
+  - enabled: 1
+    path: Assets/Scenes/Game/AgathaHome.unity
+    guid: 312f359d35562c34fb9cc7c26549dfa2
+  - enabled: 1
+    path: Assets/Scenes/DungeonFuria.unity
     guid: 3422a9aeb7b1f2f48865a5604d8329e2
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 1e8e4906bdb289b43823a554ed266f7a, type: 2}

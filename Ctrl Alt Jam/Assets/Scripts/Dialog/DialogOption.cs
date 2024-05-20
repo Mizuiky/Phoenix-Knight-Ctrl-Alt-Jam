@@ -15,6 +15,7 @@ namespace JAM.Dialog
         public void Init()
         {
             Reset();
+            DontDestroyOnLoad(this);
         }
 
         public void Reset()

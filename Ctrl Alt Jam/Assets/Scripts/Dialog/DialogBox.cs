@@ -22,6 +22,7 @@ public class DialogBox : MonoBehaviour
     public void Init()
     {
         SetBoxVisibility(false);
+        DontDestroyOnLoad(gameObject);
     }
 
     public void SetBoxVisibility(bool isVisible)

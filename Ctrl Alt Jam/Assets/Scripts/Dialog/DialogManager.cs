@@ -33,6 +33,11 @@ namespace JAM.Dialog
         private bool _goToNextNode;
         public bool IsWriting { get { return _isWriting; } }
 
+        public void Awake()
+        {
+            DontDestroyOnLoad(this);
+        }
+
         public void Init()
         {
             CtrlAltJamGameManager.Instance.UIController.onContinueDialog += OnContinueDialog;
