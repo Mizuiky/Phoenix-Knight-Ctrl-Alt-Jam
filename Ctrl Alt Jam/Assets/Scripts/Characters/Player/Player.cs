@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 using JAM.Health;
 using UnityEngine.SceneManagement;
 using System.Security.Authentication.ExtendedProtection;
+using Unity.VisualScripting;
 
 namespace JAM.Characters
 {
@@ -51,17 +52,29 @@ namespace JAM.Characters
             SceneManager.sceneLoaded += OnSceneLoaded;
         }
 
-        public void OnSceneLoaded(UnityEngine.SceneManagement.Scene scene, LoadSceneMode loadSceneMode)
-        {
-            Debug.Log("cena" + scene.name + "foi carregada");
-        }
-
         public void Update()
         {
-            if(Input.GetKeyDown(KeyCode.H))
+#if UNITY_EDITOR
+            if(Input.GetKeyDown(KeyCode.N))
+            {
+                SceneManager.LoadScene(3);
+            }
+
+            if (Input.GetKeyDown(KeyCode.H))
             {
                 _launcher.LaunchProjectil();
             }
+#endif
+        }
+
+        public void OnSceneLoaded(UnityEngine.SceneManagement.Scene scene, LoadSceneMode loadSceneMode)
+        {
+            Debug.Log("cena" + scene.name + "foi carregada");
+            GameObject _playerInitialPosition = GameObject.FindGameObjectWithTag("PlayerPoint");
+            Transform _initialTransform = _playerInitialPosition.transform;
+
+            Vector3 position = _initialTransform.position;
+            transform.position = position;
         }
 
         public void Init()

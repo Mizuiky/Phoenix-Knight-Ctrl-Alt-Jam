@@ -12,9 +12,14 @@ namespace JAM.UI
 
         public Action onContinueDialog;
 
-        public void Init()
+        public void Start()
         {
             DontDestroyOnLoad(this);
+        }
+
+        public void Init()
+        {
+            
 
             CtrlAltJamGameManager.Instance.DialogController.onStartDialog += OpenDialogBox;
             CtrlAltJamGameManager.Instance.DialogController.onEndDialog += CloseDialogBox;

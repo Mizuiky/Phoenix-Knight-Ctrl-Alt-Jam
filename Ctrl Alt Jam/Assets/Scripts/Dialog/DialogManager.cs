@@ -35,7 +35,12 @@ namespace JAM.Dialog
 
         public void Awake()
         {
-        
+           
+        }
+
+        public void Start()
+        {
+            
         }
 
         public void Init()

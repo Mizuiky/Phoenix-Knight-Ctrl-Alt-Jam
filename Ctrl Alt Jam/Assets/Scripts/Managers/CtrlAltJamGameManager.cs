@@ -49,7 +49,7 @@ public class CtrlAltJamGameManager : Singleton<CtrlAltJamGameManager>
     public void OnLoadScene(UnityEngine.SceneManagement.Scene scene, LoadSceneMode loadSceneMode)
     {
         Debug.Log("loaded");
-        string name = scene.name.ToString();
-        AudioManager.PlaySound(name, SoundType.Music);     
+        //string name = scene.name.ToString();
+        //AudioManager.PlaySound(name, SoundType.Music);     
     }
 }
