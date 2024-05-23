@@ -17,6 +17,8 @@ namespace JAM.UI
 
         public void Init()
         {
+            _dialogWritter.Init();
+
             _dialogWritter.startDialogEvent.AddListener(OpenDialogBox);
             _dialogWritter.endDialogEvent.AddListener(CloseDialogBox);
             _dialogWritter.updateOptionsEvent.AddListener(SetDialogOptions);

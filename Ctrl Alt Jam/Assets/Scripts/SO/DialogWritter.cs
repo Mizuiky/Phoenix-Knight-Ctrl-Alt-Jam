@@ -1,8 +1,8 @@
-using JAM.Dialog;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using System.Collections;
+using JAM.CoreGame;
 
 namespace JAM.Dialog
 {
