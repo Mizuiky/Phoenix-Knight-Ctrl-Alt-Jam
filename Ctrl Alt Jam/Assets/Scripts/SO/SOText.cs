@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "DialogText")]
+[CreateAssetMenu(menuName = "Data/Dialog/DialogText")]
 public class SOText : ScriptableObject
 {
     public string value;

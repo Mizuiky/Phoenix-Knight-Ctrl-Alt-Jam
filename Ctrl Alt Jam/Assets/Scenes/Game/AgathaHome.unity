@@ -478,7 +478,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &245533290
 Transform:
   m_ObjectHideFlags: 0
@@ -1410,6 +1410,10 @@ PrefabInstance:
     - target: {fileID: 7967500822901837835, guid: cabbfb89b4806f842bdf6fe077d992e9, type: 3}
       propertyPath: m_Name
       value: PlayerProjectilPool
+      objectReference: {fileID: 0}
+    - target: {fileID: 7967500822901837835, guid: cabbfb89b4806f842bdf6fe077d992e9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3715,7 +3719,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1043261330
 Transform:
   m_ObjectHideFlags: 0
@@ -4034,7 +4038,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1339140479
 Transform:
   m_ObjectHideFlags: 0
@@ -5558,6 +5562,10 @@ PrefabInstance:
     - target: {fileID: 3595653915734458405, guid: 04ddcb69e9567e14e8c5e574c58fb56c, type: 3}
       propertyPath: m_Name
       value: Trigger
+      objectReference: {fileID: 0}
+    - target: {fileID: 5862448519325059603, guid: 04ddcb69e9567e14e8c5e574c58fb56c, type: 3}
+      propertyPath: name
+      value: DungeonFuria
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -10,6 +10,8 @@ TagManager:
   - Item
   - PlayerPoint
   - DialogManager
+  - MusicSource
+  - SFXSource
   layers:
   - Default
   - TransparentFX

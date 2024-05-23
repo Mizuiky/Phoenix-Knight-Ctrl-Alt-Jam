@@ -7,8 +7,11 @@ public enum Language
     EN
 }
 
-public class LocalizationManager
+[CreateAssetMenu(menuName = "Data/Dialog/LocalizationHandler")]
+public class LocalizationHandler : ScriptableObject
 {
+    public TextAsset[] _localizationFiles;
+
     private Dictionary<string, string> PT_BR;
     private Dictionary<string, string> EN;
     private Dictionary<string, string>[] languages;
@@ -16,7 +19,7 @@ public class LocalizationManager
     private Language gameLanguage;
     private int languageIndex;
 
-    public void Init(TextAsset [] files)
+    public void Init()
     {
         PT_BR = new Dictionary<string, string>();
         EN = new Dictionary<string, string>();
@@ -29,9 +32,9 @@ public class LocalizationManager
 
         gameLanguage = Language.PT;
 
-        for (int i = 0; i < files.Length; i++)
+        for (int i = 0; i < _localizationFiles.Length; i++)
         {
-            BuildDictionary(files[i], i);
+            BuildDictionary(_localizationFiles[i], i);
         }
     }
 

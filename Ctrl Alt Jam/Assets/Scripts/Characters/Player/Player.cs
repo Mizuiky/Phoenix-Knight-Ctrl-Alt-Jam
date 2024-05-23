@@ -57,7 +57,7 @@ namespace JAM.Characters
 #if UNITY_EDITOR
             if(Input.GetKeyDown(KeyCode.N))
             {
-                SceneManager.LoadScene(3);
+                SceneManager.LoadScene(4);
             }
 
             if (Input.GetKeyDown(KeyCode.H))

@@ -9,49 +9,37 @@ namespace JAM.Audio
         SFX
     }
 
-    public class AudioManager
+    [CreateAssetMenu(menuName = "Audio/AudioHandler")]
+    public class AudioHandler : ScriptableObject
     {
-        [SerializeField] private string musicName;
-        [SerializeField] private SoundType musicType;
-
-        [SerializeField] private AudioSource _musicSource;
-        [SerializeField] private AudioSource _sfxSource;
-
-        [SerializeField] private AudioData _musicData;
-        [SerializeField] private AudioData _sfxData;
-
-        [SerializeField] private List<AudioConfig> _musicConfigs;
-        [SerializeField] private List<AudioConfig> _sfxConfigs;
+        public AudioData _musicData;
+        public AudioData _sfxData;
 
         private AudioConfig _audioConfig;
         private AudioSource _currentAudioSource;
 
-        public void Start()
-        {
-            Init();
-        }
+        private AudioSource _musicSource;
+        private AudioSource _sfxSource;
 
-        public void Init()
+        public void SetAudioSource(AudioSource music, AudioSource sfx = null)
         {
-            _musicConfigs = new List<AudioConfig>();
-            _musicConfigs = _musicData.audioConfigList;
-
-            _sfxConfigs = new List<AudioConfig>();
-            _sfxConfigs = _sfxData.audioConfigList;        
+            _musicSource = music;
+            if(sfx != null)
+                _sfxSource = sfx;
         }
 
         public void Reset()
         {
             _musicSource.Stop();
-            _sfxSource.Stop();       
+            _sfxSource.Stop();
         }
 
         public void PlaySound(string name, SoundType type)
         {
-            if(type == SoundType.Music)
-                _audioConfig = GetAudioConfig(name, _musicConfigs, type);
+            if (type == SoundType.Music)
+                _audioConfig = GetAudioConfig(name, _musicData.audioConfigList, type);
             else
-                _audioConfig = GetAudioConfig(name, _sfxConfigs, type);
+                _audioConfig = GetAudioConfig(name, _sfxData.audioConfigList, type);
 
             _currentAudioSource = type == SoundType.Music ? _musicSource : _sfxSource;
 
@@ -80,11 +68,11 @@ namespace JAM.Audio
             _currentAudioSource.pitch = _audioConfig.pitch;
             _currentAudioSource.loop = _audioConfig.isLoopSound;
 
-            if(_audioConfig.has3DSound)
+            if (_audioConfig.has3DSound)
             {
                 _currentAudioSource.minDistance = _audioConfig.minDistance;
                 _currentAudioSource.maxDistance = _audioConfig.maxDistance;
-            }         
+            }
         }
     }
 
@@ -103,3 +91,6 @@ namespace JAM.Audio
         public float maxDistance;
     }
 }
+
+
+

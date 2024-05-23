@@ -1,7 +1,7 @@
 
 namespace JAM.Health
 {
-    public class PlayerHeal : HealthBase
+    public class PlayerHealth : HealthBase
     {
         public override void OnHealing()
         {

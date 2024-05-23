@@ -1,16 +1,44 @@
-using System;
-using System.Collections;
+using JAM.Dialog;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
+using System.Collections;
 
 namespace JAM.Dialog
 {
-    public class DialogManager : MonoBehaviour
+    [CreateAssetMenu(menuName = "Data/Dialog/DialogWritter")]
+    public class DialogWritter : ScriptableObject
     {
-        [SerializeField] private SOText _dialogText;
-        [SerializeField] private SOText _dialogName;
+        #region Events
 
-        [SerializeField] private float _timeBetweenLetters = 0.03f;
+        [System.NonSerialized]
+        public UnityEvent startDialogEvent;
+
+        [System.NonSerialized]
+        public UnityEvent endDialogEvent;
+
+        [System.NonSerialized]
+        public UnityEvent enableNextButtonEvent;
+
+        [System.NonSerialized]
+        public UnityEvent<List<Option>> updateOptionsEvent;
+
+        [System.NonSerialized]
+        public UnityEvent<Sprite> changePortraitEvent;
+
+        #endregion
+
+        public DialogLoader _dialogLoader;
+        public LocalizationHandler _localizationHandler;
+
+        public SOText _dialogText;
+        public SOText _dialogName;
+
+        public float _timeBetweenLetters = 0.03f;
+
+        public Sprite _defaultPortrait;
+
+        #region Private Fields
 
         private int _nextNode;
         private int _dialogIndex;
@@ -19,47 +47,50 @@ namespace JAM.Dialog
         private Sprite _nodePortrait;
         private Coroutine _currentCoroutine;
         private List<Option> _currentOptions;
-        private InitializeDialogs _dialogReference;
-
-        public Action onStartDialog;
-        public Action onEndDialog;
-        public Action onEnableNextButton;
-        public Action<List<Option>> onUpdateOptions;
-        public Action<Sprite> onChangePortrait;
 
         private char[] _dialogLetters;
 
         private bool _isWriting;
         private bool _goToNextNode;
+
+        #endregion
+
         public bool IsWriting { get { return _isWriting; } }
 
-        public void Awake()
+        private void OnEnable()
         {
-           
-        }
+            if (startDialogEvent == null)
+                startDialogEvent = new UnityEvent();
 
-        public void Start()
-        {
-            
+            if (endDialogEvent == null)
+                endDialogEvent = new UnityEvent();
+
+            if (enableNextButtonEvent == null)
+                enableNextButtonEvent = new UnityEvent();
+
+            if (updateOptionsEvent == null)
+                updateOptionsEvent = new UnityEvent<List<Option>>();
+
+            if (changePortraitEvent == null)
+                changePortraitEvent = new UnityEvent<Sprite>();
         }
 
         public void Init()
         {
-            CtrlAltJamGameManager.Instance.UIController.onContinueDialog += OnContinueDialog;
-
-            _dialogReference = CtrlAltJamGameManager.Instance.InitializeDialogs;
-
             _currentOptions = new List<Option>()
-            {
-                new Option(),
-                new Option(),
-                new Option()
-            };
+        {
+            new Option(),
+            new Option(),
+            new Option()
+        };
 
-            Reset();
+            _dialogLoader.Load();
+            _localizationHandler?.Init();
+
+            ResetWritter();
         }
 
-        public void Reset()
+        public void ResetWritter()
         {
             _isWriting = false;
             _goToNextNode = false;
@@ -83,18 +114,18 @@ namespace JAM.Dialog
         public void StartDialog(int startNode)
         {
             _isWriting = true;
-            _currentNode = _dialogReference.dialogNodes.nodes[startNode];
+            _currentNode = _dialogLoader.DialogNodes[startNode];
 
             if (_currentCoroutine != null)
-                StopCoroutine(_currentCoroutine);
+                Core.Instance.StopCoroutine(_currentCoroutine);
 
-            _currentCoroutine = StartCoroutine(WriteCoroutine());
+            _currentCoroutine = Core.Instance.StartCoroutine(WriteCoroutine());
         }
 
         private IEnumerator WriteCoroutine()
         {
             //Start dialog opening the box
-            onStartDialog.Invoke();
+            startDialogEvent.Invoke();
 
             while (_currentNode != null)
             {
@@ -118,7 +149,7 @@ namespace JAM.Dialog
                         OnUpdateOptions(_currentNode.answers);
                     }
                     else
-                        onEnableNextButton?.Invoke();
+                        enableNextButtonEvent?.Invoke();
                 }
                 #endregion
 
@@ -150,7 +181,7 @@ namespace JAM.Dialog
                 _currentOptions[i].index = i;
             }
 
-            onUpdateOptions?.Invoke(_currentOptions);
+            updateOptionsEvent?.Invoke(_currentOptions);
         }
 
         private void ChangeCurrentNode(int selectedAnswer)
@@ -163,7 +194,7 @@ namespace JAM.Dialog
 
                 if (_nextNode != 0)
                 {
-                    _currentNode = _dialogReference.dialogNodes.nodes[_nextNode];
+                    _currentNode = _dialogLoader.DialogNodes[_nextNode];
                     _goToNextNode = true;
                 }
                 else
@@ -178,7 +209,6 @@ namespace JAM.Dialog
                 ChangeCurrentNode(index);
         }
 
-        //Called when Clicked next button
         public void OnContinueDialog()
         {
             if (!_isWriting)
@@ -195,7 +225,7 @@ namespace JAM.Dialog
                 else
                 {
                     _nextNode = _currentNode.nextNode;
-                    _currentNode = _dialogReference.dialogNodes.nodes[_nextNode];
+                    _currentNode = _dialogLoader.DialogNodes[_nextNode];
                     _dialogIndex = 0;
                     _goToNextNode = true;
                 }
@@ -209,16 +239,16 @@ namespace JAM.Dialog
             _dialogIndex = 0;
             _isWriting = false;
 
-            StopCoroutine(WriteCoroutine());
-            onEndDialog.Invoke();
+            Core.Instance.StopRoutine(WriteCoroutine());
+            endDialogEvent.Invoke();
         }
 
         private void ChangePortrait()
         {
-            _nodePortrait = _dialogReference.GetPortrait(_dialogName.value.ToLower());
+            _nodePortrait = _dialogLoader.GetPortrait(_dialogName.value.ToLower());
 
             if (_nodePortrait != null)
-                onChangePortrait?.Invoke(_nodePortrait);
+                changePortraitEvent?.Invoke(_nodePortrait);
         }
 
         private void UpdateDialog(string dialogKey, string portraitName)
@@ -228,17 +258,18 @@ namespace JAM.Dialog
             if (dialogTranslation != "")
                 _dialogLetters = dialogTranslation.ToCharArray();
 
-            _dialogName.value = _dialogReference.CaptalizeFirstLeter(portraitName);
+            _dialogName.value = _dialogLoader.CaptalizeFirstLeter(portraitName);
         }
 
         private string GetKeyTranslation(string dialogKey)
         {
-            var text = CtrlAltJamGameManager.Instance.LocalizationManager.GetTranslation(dialogKey);
+            var text = _localizationHandler.GetTranslation(dialogKey);
 
             if (text != "")
                 return text;
             return "";
         }
+
     }
 
     public class Option

@@ -11,7 +11,7 @@ public class OnTrigger : MonoBehaviour
         {
             Player ply = collision.gameObject.GetComponent<Player>();
             if (ply != null)
-                SceneManager.LoadScene("name");
+                SceneManager.LoadScene(name);
 
         }
     }

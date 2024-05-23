@@ -6,15 +6,16 @@ namespace JAM.Dialog
     public class DialogTrigger : MonoBehaviour, IDialogTrigger
     {
         [SerializeField] private int _dialogRoot;
+        [SerializeField] private DialogWritter _writter;
+
+        public UnityEvent onDialogFinished;
 
         private bool hasDialogFinished = true;
         public bool HasDialogFinished {  get { return hasDialogFinished; } }
 
-        public UnityEvent onDialogFinished;
-
         public void Start()
         {
-            CtrlAltJamGameManager.Instance.DialogController.onEndDialog += OnEndDialog;
+            _writter.endDialogEvent.AddListener(OnEndDialog);
         }
 
         public virtual void OnStartDialog()
@@ -29,7 +30,7 @@ namespace JAM.Dialog
                 {
                     Debug.Log("Started dialog");
                     hasDialogFinished = false;
-                    CtrlAltJamGameManager.Instance.DialogController.StartDialog(_dialogRoot);                 
+                    _writter.StartDialog(_dialogRoot);                 
                 }
             }
         }

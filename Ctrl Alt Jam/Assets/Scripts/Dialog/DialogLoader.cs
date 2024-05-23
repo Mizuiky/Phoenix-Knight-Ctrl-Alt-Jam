@@ -1,15 +1,17 @@
 using UnityEngine;
 
-public class InitializeDialogs
+[CreateAssetMenu(menuName = "Data/Dialog/DialogLoader")]
+public class DialogLoader : ScriptableObject
 {
-    [HideInInspector]
-    public DialogNodes dialogNodes;
-    [SerializeField]
+    public TextAsset _dialogFile;
     public Sprite [] dialogPortraits;
 
-    public void Load(TextAsset dialogFile)
+    private DialogNodes dialogNodes;
+    public Node[] DialogNodes { get { return dialogNodes.nodes; } }
+
+    public void Load()
     {
-        dialogNodes = JsonHelper.Deserialize<DialogNodes>(dialogFile.ToString());
+        dialogNodes = JsonHelper.Deserialize<DialogNodes>(_dialogFile.ToString());
         LoadPortraits();
     }
 

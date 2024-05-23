@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 using JAM.Dialog;
@@ -7,10 +6,9 @@ namespace JAM.UI
 {
     public class UIManager : MonoBehaviour
     {
+        [SerializeField] private DialogWritter _dialogWritter;
         [SerializeField] private DialogBox _dialogBox;
-        //[SerializeField] private HUD _hud;
-
-        public Action onContinueDialog;
+        [SerializeField] private HUD _hud;
 
         public void Start()
         {
@@ -19,13 +17,11 @@ namespace JAM.UI
 
         public void Init()
         {
-            
-
-            CtrlAltJamGameManager.Instance.DialogController.onStartDialog += OpenDialogBox;
-            CtrlAltJamGameManager.Instance.DialogController.onEndDialog += CloseDialogBox;
-            CtrlAltJamGameManager.Instance.DialogController.onUpdateOptions += SetDialogOptions;
-            CtrlAltJamGameManager.Instance.DialogController.onEnableNextButton += HideOptions;
-            CtrlAltJamGameManager.Instance.DialogController.onChangePortrait += UpdatePortrait;
+            _dialogWritter.startDialogEvent.AddListener(OpenDialogBox);
+            _dialogWritter.endDialogEvent.AddListener(CloseDialogBox);
+            _dialogWritter.updateOptionsEvent.AddListener(SetDialogOptions);
+            _dialogWritter.enableNextButtonEvent.AddListener(HideOptions);
+            _dialogWritter.changePortraitEvent.AddListener(UpdatePortrait);
 
             DialogOption.onChooseOption += SelectOption;
 
@@ -42,52 +38,52 @@ namespace JAM.UI
 
         #region DialogBox
 
-        public void OpenDialogBox()
+        private void OpenDialogBox()
         {
             _dialogBox.SetBoxVisibility(true);
             _dialogBox.EnableOptionsContainer(true);
         }
 
-        public void CloseDialogBox()
+        private void CloseDialogBox()
         {
             _dialogBox.SetBoxVisibility(false);
         }
 
-        public void SetDialogOptions(List<Option> options)
+        private void SetDialogOptions(List<Option> options)
         {
             _dialogBox.SetOptions(options);
         }
 
-        public void HideOptions()
+        private void HideOptions()
         {
             _dialogBox.HideDialogOptions();
         }
 
-        public void UpdatePortrait(Sprite newPortrait)
+        private void UpdatePortrait(Sprite newPortrait)
         {
             _dialogBox.ChangePortrait(newPortrait);
         }
 
-        public void SelectOption(int option)
+        private void SelectOption(int option)
         {
             Debug.Log($"next dialog index: {option}");
-            CtrlAltJamGameManager.Instance.DialogController.ChangeToNextDialog(option);
+            _dialogWritter.ChangeToNextDialog(option);
         }
 
         public void OnContinueDialog()
         {
-            onContinueDialog?.Invoke();
+            _dialogWritter.OnContinueDialog();
         }
 
         #endregion
 
         private void OnDisable()
         {
-            CtrlAltJamGameManager.Instance.DialogController.onStartDialog -= OpenDialogBox;
-            CtrlAltJamGameManager.Instance.DialogController.onEndDialog -= CloseDialogBox;
-            CtrlAltJamGameManager.Instance.DialogController.onUpdateOptions -= SetDialogOptions;
-            CtrlAltJamGameManager.Instance.DialogController.onEnableNextButton -= HideOptions;
-            CtrlAltJamGameManager.Instance.DialogController.onChangePortrait -= UpdatePortrait;
+            _dialogWritter.startDialogEvent.RemoveListener(OpenDialogBox);
+            _dialogWritter.endDialogEvent.RemoveListener(CloseDialogBox);
+            _dialogWritter.updateOptionsEvent.RemoveListener(SetDialogOptions);
+            _dialogWritter.enableNextButtonEvent.RemoveListener(HideOptions);
+            _dialogWritter.changePortraitEvent.RemoveListener(UpdatePortrait);
 
             DialogOption.onChooseOption -= SelectOption;
         }
