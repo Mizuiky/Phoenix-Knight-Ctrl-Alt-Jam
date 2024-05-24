@@ -23,7 +23,7 @@ MonoBehaviour:
     maxDistance: 0
   - clip: {fileID: 8300000, guid: b2c45c8f8a3112e48bb4159d64f44daf, type: 3}
     name: AgathaDream
-    volume: 0.049
+    volume: 0.075
     pitch: 1
     isLoopSound: 1
     has3DSound: 0
