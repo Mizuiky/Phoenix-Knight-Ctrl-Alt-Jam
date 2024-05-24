@@ -39,6 +39,9 @@ namespace JAM.CoreGame
         public void OnLoadSceneAsync(UnityEngine.SceneManagement.Scene scene, LoadSceneMode loadSceneMode)
         {
             UpdateAudioSource();
+
+            if (name == "AgathaVillage");
+                _audioHandler.PlaySound("AgathaHome", SoundType.Music);
         }
 
         private void UpdateAudioSource()
