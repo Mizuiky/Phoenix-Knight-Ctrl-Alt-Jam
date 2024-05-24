@@ -71,6 +71,9 @@ namespace JAM.Characters
         {
             Debug.Log("cena" + scene.name + "foi carregada");
             GameObject _playerInitialPosition = GameObject.FindGameObjectWithTag("PlayerPoint");
+
+            if (_playerInitialPosition == null) return;
+
             Transform _initialTransform = _playerInitialPosition.transform;
 
             Vector3 position = _initialTransform.position;
