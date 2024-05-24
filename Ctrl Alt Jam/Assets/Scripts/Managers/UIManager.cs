@@ -8,7 +8,7 @@ namespace JAM.UI
     {
         [SerializeField] private DialogWritter _dialogWritter;
         [SerializeField] private DialogBox _dialogBox;
-        [SerializeField] private HUD _hud;
+        //[SerializeField] private HUD _hud;
 
         public void Start()
         {
