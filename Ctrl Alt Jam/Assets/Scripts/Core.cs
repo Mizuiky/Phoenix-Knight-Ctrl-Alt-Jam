@@ -4,57 +4,63 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Core : Singleton<Core>
+namespace JAM.CoreGame
 {
-    [SerializeField] private UIManager _uiManager;
-    [SerializeField] private AudioHandler _audioHandler;
-
-    private AudioSource _musicSource;
-    private AudioSource _SFXSource;
-
-    public void Start()
+    public class Core : Singleton<Core>
     {
-        Init();
-    }
+        [SerializeField] private UIManager _uiManager;
+        [SerializeField] private AudioHandler _audioHandler;
 
-    private void Init()
-    {
-        SceneManager.sceneLoaded += OnLoadSceneAsync;
-        _uiManager?.Init();
-    }
+        private AudioSource _musicSource;
+        private AudioSource _SFXSource;
 
-
-    public void StartRoutine(IEnumerator coroutine)
-    {
-        Instance.StartCoroutine(coroutine);
-    }
-
-    public void StopRoutine(IEnumerator coroutine)
-    {
-        Instance.StopCoroutine(coroutine);
-    }
-
-    public void OnLoadSceneAsync(UnityEngine.SceneManagement.Scene scene, LoadSceneMode loadSceneMode)
-    {
-        UpdateAudioSource();
-    }
-
-    private void UpdateAudioSource()
-    {
-        Debug.Log("loaded");
-        AudioSource[] audioSources = FindObjectsByType<AudioSource>(FindObjectsSortMode.InstanceID);
-
-        if(audioSources.Length > 0)
+        public void Start()
         {
-            for(int i = 0; i < audioSources.Length; i++)
-            {
-                if (audioSources[i].gameObject.CompareTag("MusicSource"))
-                    _musicSource = audioSources[i];
-                else
-                    _SFXSource = audioSources[i];
-            }
+            Init();
         }
 
-        _audioHandler.SetAudioSource(_musicSource, _SFXSource);
+        private void Init()
+        {
+            SceneManager.sceneLoaded += OnLoadSceneAsync;
+            _uiManager?.Init();
+        }
+
+
+        public void StartRoutine(IEnumerator coroutine)
+        {
+            Instance.StartCoroutine(coroutine);
+        }
+
+        public void StopRoutine(IEnumerator coroutine)
+        {
+            Instance.StopCoroutine(coroutine);
+        }
+
+        public void OnLoadSceneAsync(UnityEngine.SceneManagement.Scene scene, LoadSceneMode loadSceneMode)
+        {
+            UpdateAudioSource();
+
+            if (name == "AgathaVillage");
+                _audioHandler.PlaySound("AgathaHome", SoundType.Music);
+        }
+
+        private void UpdateAudioSource()
+        {
+            Debug.Log("loaded");
+            AudioSource[] audioSources = FindObjectsByType<AudioSource>(FindObjectsSortMode.InstanceID);
+
+            if (audioSources.Length > 0)
+            {
+                for (int i = 0; i < audioSources.Length; i++)
+                {
+                    if (audioSources[i].gameObject.CompareTag("MusicSource"))
+                        _musicSource = audioSources[i];
+                    else
+                        _SFXSource = audioSources[i];
+                }
+            }
+
+            _audioHandler.SetAudioSource(_musicSource, _SFXSource);
+        }
     }
 }

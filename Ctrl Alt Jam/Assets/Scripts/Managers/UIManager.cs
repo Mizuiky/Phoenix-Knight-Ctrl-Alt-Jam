@@ -8,7 +8,7 @@ namespace JAM.UI
     {
         [SerializeField] private DialogWritter _dialogWritter;
         [SerializeField] private DialogBox _dialogBox;
-        [SerializeField] private HUD _hud;
+        //[SerializeField] private HUD _hud;
 
         public void Start()
         {
@@ -17,6 +17,8 @@ namespace JAM.UI
 
         public void Init()
         {
+            _dialogWritter.Init();
+
             _dialogWritter.startDialogEvent.AddListener(OpenDialogBox);
             _dialogWritter.endDialogEvent.AddListener(CloseDialogBox);
             _dialogWritter.updateOptionsEvent.AddListener(SetDialogOptions);

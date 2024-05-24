@@ -43,6 +43,8 @@ namespace JAM.Audio
 
             _currentAudioSource = type == SoundType.Music ? _musicSource : _sfxSource;
 
+            if (_audioConfig == null) return;
+
             SetSound();
 
             _currentAudioSource.Play();
