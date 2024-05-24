@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _dialogLoader: {fileID: 11400000, guid: b5913f921459e66439d35e2ed6797cab, type: 2}
   _localizationHandler: {fileID: 11400000, guid: ef253059d1434b7489366ced9a584179, type: 2}
-  _dialogText: {fileID: 11400000, guid: 3a5495a768b91ac408bf9f69e4cc5d35, type: 2}
+  _dialogText: {fileID: 11400000, guid: 479d1ef213520e441a00c1d57a519e4e, type: 2}
   _dialogName: {fileID: 11400000, guid: 3a5495a768b91ac408bf9f69e4cc5d35, type: 2}
-  _timeBetweenLetters: 0.03
+  _timeBetweenLetters: 0.05
   _defaultPortrait: {fileID: 0}
