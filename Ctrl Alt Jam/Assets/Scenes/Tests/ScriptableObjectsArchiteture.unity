@@ -238,7 +238,7 @@ Transform:
   m_GameObject: {fileID: 34457506}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalPosition: {x: 0.38, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -454,7 +454,7 @@ PrefabInstance:
       objectReference: {fileID: 1566694405}
     - target: {fileID: 8439675587874994912, guid: 6a6e528a6a521244ea767c2192324b81, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 0.38
       objectReference: {fileID: 0}
     - target: {fileID: 8439675587874994912, guid: 6a6e528a6a521244ea767c2192324b81, type: 3}
       propertyPath: m_LocalPosition.y
@@ -894,7 +894,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _uiManager: {fileID: 1967733676}
   _audioHandler: {fileID: 11400000, guid: 8ab975f15e3a791499965ec367a40d81, type: 2}
---- !u!43 &954789524
+--- !u!43 &1079758362
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1192,7 +1192,7 @@ Transform:
   m_GameObject: {fileID: 1203288349}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalPosition: {x: 0.38, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1491,7 +1491,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 32.81, y: 18.1, z: 1}
+  m_LocalScale: {x: 200, y: 200, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -2294,7 +2294,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2142621912
 Transform:
   m_ObjectHideFlags: 0
@@ -2354,10 +2354,10 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 22.27521, y: 36.48622}
-      - {x: -30.91423, y: 36.41698}
-      - {x: -31.139118, y: -14.13869}
-      - {x: 23.034466, y: -13.3828945}
+    - - {x: 23.142767, y: 36.48622}
+      - {x: -31.348011, y: 36.850758}
+      - {x: -31.789783, y: -15.656913}
+      - {x: 23.251354, y: -15.551786}
       - {x: 22.875809, y: 5.786647}
   m_UseDelaunayMesh: 0
 --- !u!114 &2077844049099673171 stripped
