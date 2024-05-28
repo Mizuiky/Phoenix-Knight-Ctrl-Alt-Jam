@@ -4056,7 +4056,7 @@ MonoBehaviour:
   m_LightType: 3
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.5
-  m_Color: {r: 0.8773585, g: 0.7176471, b: 0.22761661, a: 1}
+  m_Color: {r: 0.5660378, g: 0.4842366, b: 0.2322891, a: 1}
   m_Intensity: 1.7
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
@@ -4160,7 +4160,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8439675587874994912, guid: 6a6e528a6a521244ea767c2192324b81, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 19.16
+      value: 57.7
       objectReference: {fileID: 0}
     - target: {fileID: 8439675587874994912, guid: 6a6e528a6a521244ea767c2192324b81, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4386,7 +4386,7 @@ Transform:
   m_GameObject: {fileID: 736447739}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.83, y: 19.16, z: -10}
+  m_LocalPosition: {x: 1.83, y: 57.7, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -32919,7 +32919,7 @@ Transform:
   m_GameObject: {fileID: 1761890203}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.8277332, y: 20.596436, z: -10}
+  m_LocalPosition: {x: 1.83, y: 57.7, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -33209,7 +33209,7 @@ MonoBehaviour:
   m_LightType: 4
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.5
-  m_Color: {r: 0.4061944, g: 0.5017151, b: 0.5283019, a: 1}
+  m_Color: {r: 0.40801886, g: 0.47923005, b: 0.5, a: 1}
   m_Intensity: 0.5
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
