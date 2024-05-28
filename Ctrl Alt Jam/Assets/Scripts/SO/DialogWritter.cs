@@ -247,8 +247,7 @@ namespace JAM.Dialog
         {
             _nodePortrait = _dialogLoader.GetPortrait(_dialogName.value.ToLower());
 
-            if (_nodePortrait != null)
-                changePortraitEvent?.Invoke(_nodePortrait);
+            changePortraitEvent?.Invoke(_nodePortrait);
         }
 
         private void UpdateDialog(string dialogKey, string portraitName)

@@ -101,6 +101,13 @@ public class DialogBox : MonoBehaviour
 
     public void ChangePortrait(Sprite sprite)
     {
+        if(sprite == null)
+        {
+            portrait.gameObject.SetActive(false);
+            return;
+        }
+
+        portrait.gameObject.SetActive(true);
         portrait.sprite = sprite;
     }
 
