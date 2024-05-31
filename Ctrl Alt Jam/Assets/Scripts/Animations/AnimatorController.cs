@@ -24,8 +24,6 @@ namespace JAM.Animations
 
         public void Play(Vector2 direction)
         {
-           
-
             Debug.Log("diarection:" + direction);
             Debug.Log("magnitude " + direction.magnitude);
             Debug.Log("animationName" + animationName);
@@ -59,6 +57,12 @@ namespace JAM.Animations
             }
             float stepCount = angle / step;
             return Mathf.FloorToInt(stepCount);
+        }
+
+        public void PlayAttack()
+        {
+            animationName = "Attack";
+            animator.Play(animationName + " " + lastFaceDirection);
         }
     }
 }
