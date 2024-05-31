@@ -5,8 +5,6 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using JAM.Health;
 using UnityEngine.SceneManagement;
-using System.Security.Authentication.ExtendedProtection;
-using Unity.VisualScripting;
 
 namespace JAM.Characters
 {
