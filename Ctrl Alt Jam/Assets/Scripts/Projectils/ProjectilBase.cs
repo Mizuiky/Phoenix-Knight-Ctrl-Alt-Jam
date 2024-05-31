@@ -9,24 +9,24 @@ namespace JAM.Projectils
         [SerializeField] private SpriteRenderer _spriteRenterer;
         
         protected Vector3 _direction;
-        private float _passedTime;
+        private float _elapsedTime;
         private float _damagePercent;
 
         public void Update()
         {
-            if(_passedTime < _data.lifeTime)
+            if(_elapsedTime < _data.lifeTime)
             {
                 transform.Translate(_direction * _data.speed * Time.deltaTime);
 
-                _passedTime += Time.deltaTime;
-                if (_passedTime >= _data.lifeTime)
+                _elapsedTime += Time.deltaTime;
+                if (_elapsedTime >= _data.lifeTime)
                     Deactivate();
             }
         }
 
         public virtual void Init()
         {
-            _passedTime = _data.lifeTime;
+            _elapsedTime = _data.lifeTime;
             _spriteRenterer.sprite = _data.sprite;
             transform.rotation = Quaternion.identity;
             _damagePercent = _data.damage * _data.damagePercent;
@@ -47,7 +47,7 @@ namespace JAM.Projectils
         {
             PlayParticle();
             gameObject.SetActive(true);
-            _passedTime = 0f;
+            _elapsedTime = 0f;
         }
 
         private void OnTriggerEnter2D(Collider2D collision)
