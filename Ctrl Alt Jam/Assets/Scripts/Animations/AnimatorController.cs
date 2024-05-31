@@ -13,6 +13,7 @@ namespace JAM.Animations
         private CharacterBase character;
         private readonly List<string> directions = new List<string>() { "N", "NW", "W", "SW", "S", "SE", "E", "NE" };
         private string facingDirection = "N";
+        private string lastFaceDirection = "N";
         string animationName;
 
         void Awake()
@@ -23,15 +24,24 @@ namespace JAM.Animations
 
         public void Play(Vector2 direction)
         {
+           
+
+            Debug.Log("diarection:" + direction);
+            Debug.Log("magnitude " + direction.magnitude);
+            Debug.Log("animationName" + animationName);
+            Debug.Log("facing direction" + facingDirection);
+
             if (direction == Vector2.zero)
             {
                 animationName = "Idle";
+                facingDirection = lastFaceDirection;
             }
             else if (direction != Vector2.zero || direction.magnitude != 0)
             {
                 animationName = "Walk";
                 int faceDirectionIndex = DirectionToIndex(direction);
                 facingDirection = directions[faceDirectionIndex];
+                lastFaceDirection = facingDirection;
             }
             animator.Play(animationName + " " + facingDirection);
         }

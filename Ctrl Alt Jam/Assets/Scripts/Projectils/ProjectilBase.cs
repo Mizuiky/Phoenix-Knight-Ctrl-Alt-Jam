@@ -7,6 +7,7 @@ namespace JAM.Projectils
     {
         [SerializeField] private ProjectilData _data;
         [SerializeField] private SpriteRenderer _spriteRenterer;
+        [SerializeField] private Collider2D _collider;
         
         protected Vector3 _direction;
         private float _elapsedTime;
@@ -30,6 +31,7 @@ namespace JAM.Projectils
             _spriteRenterer.sprite = _data.sprite;
             transform.rotation = Quaternion.identity;
             _damagePercent = _data.damage * _data.damagePercent;
+            _collider.enabled = true;
 
             gameObject.SetActive(false);            
         }
@@ -68,6 +70,8 @@ namespace JAM.Projectils
         public void Deactivate()
         {
             transform.rotation = Quaternion.identity;
+            _collider.enabled = false;
+
             gameObject.SetActive(false);
         }
     }
