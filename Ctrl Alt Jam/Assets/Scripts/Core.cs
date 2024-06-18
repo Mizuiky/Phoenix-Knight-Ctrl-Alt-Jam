@@ -3,6 +3,7 @@ using JAM.UI;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using JAM.Pools;
 
 namespace JAM.CoreGame
 {
@@ -10,9 +11,12 @@ namespace JAM.CoreGame
     {
         [SerializeField] private UIManager _uiManager;
         [SerializeField] private AudioHandler _audioHandler;
+        [SerializeField] private PoolManager _poolManager;
 
         private AudioSource _musicSource;
         private AudioSource _SFXSource;
+
+        public PoolManager PoolManager { get { return _poolManager; } }
 
         public void Start()
         {
@@ -23,6 +27,7 @@ namespace JAM.CoreGame
         {
             SceneManager.sceneLoaded += OnLoadSceneAsync;
             _uiManager?.Init();
+            _poolManager?.InitPools();
         }
 
 

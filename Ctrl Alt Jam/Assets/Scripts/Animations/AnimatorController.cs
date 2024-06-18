@@ -15,6 +15,7 @@ namespace JAM.Animations
         private string facingDirection = "N";
         private string lastFaceDirection = "N";
         string animationName;
+        int lastFaceDirectionIndex;
 
         void Awake()
         {
@@ -24,9 +25,6 @@ namespace JAM.Animations
 
         public void Play(Vector2 direction)
         {
-            Debug.Log("diarection:" + direction);
-            Debug.Log("magnitude " + direction.magnitude);
-            Debug.Log("animationName" + animationName);
             Debug.Log("facing direction" + facingDirection);
 
             if (direction == Vector2.zero)
@@ -40,6 +38,7 @@ namespace JAM.Animations
                 int faceDirectionIndex = DirectionToIndex(direction);
                 facingDirection = directions[faceDirectionIndex];
                 lastFaceDirection = facingDirection;
+                lastFaceDirectionIndex = faceDirectionIndex;
             }
             animator.Play(animationName + " " + facingDirection);
         }
@@ -61,8 +60,8 @@ namespace JAM.Animations
 
         public void PlayAttack()
         {
-            animationName = "Attack";
-            animator.Play(animationName + " " + lastFaceDirection);
+            animator.SetTrigger("Attack");
+            animator.SetInteger("DirectionIndex", lastFaceDirectionIndex);
         }
     }
 }

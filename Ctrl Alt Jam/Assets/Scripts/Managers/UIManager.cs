@@ -12,7 +12,7 @@ namespace JAM.UI
 
         public void Start()
         {
-            DontDestroyOnLoad(this);
+  
         }
 
         public void Init()

@@ -33,6 +33,8 @@ namespace JAM.Abilites
 
         public override void HandleAbility()
         {
+            Debug.Log("Play fireball");
+            _character.characterComponents.animatorController.PlayAttack();
             _launcher.LaunchProjectil();
         }
     }

@@ -3,19 +3,22 @@ using UnityEngine;
 
 namespace JAM.Pools
 {
-    public class PoolBase : MonoBehaviour
+    [CreateAssetMenu(menuName = "Pools")]
+    public class Pool : ScriptableObject
     {
-        [SerializeField] private GameObject _poolObject;
-        [SerializeField] private Queue<GameObject> _poolQueue;
-        [SerializeField] private Transform _poolLocation;
-        [SerializeField] private int _poolSize;
+        public GameObject _poolObject;
+        public int _poolSize;
+
+        private Transform _poolLocation;
+        private Queue<GameObject> _poolQueue;
 
         private GameObject _obj;
         private GameObject _objSpawned;
 
-        public virtual void Init()
+        public virtual void Init(Transform poolLocation)
         {
             _poolQueue = new Queue<GameObject>();
+            _poolLocation = poolLocation;
 
             for (int i = 0; i < _poolSize; i++)
             {

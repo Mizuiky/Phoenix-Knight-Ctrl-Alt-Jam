@@ -1,11 +1,14 @@
 using UnityEngine;
 using JAM.Characters;
+using JAM.CoreGame;
+using JAM.Pools;
 
 namespace JAM.Projectils
 {
     public class ProjectilLauncherBase : MonoBehaviour
     {
         [SerializeField] protected Transform _firePosition;
+        [SerializeField] protected PoolType _poolType;
 
         protected GameObject _obj;
 
@@ -27,7 +30,7 @@ namespace JAM.Projectils
 
         protected IProjectil GetProjectil()
         {
-            //_obj = CtrlAltJamGameManager.Instance.ProjectilPool.GetObject();
+           // _obj = Core.Instance.PoolManager.SelectPool();
 
             IProjectil projectil = _obj.GetComponent<IProjectil>();
             if (projectil == null) return null;
